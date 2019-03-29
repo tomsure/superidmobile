@@ -12,6 +12,14 @@ exports.assetsPath = function (_path) {
   return path.posix.join(assetsSubDirectory, _path)
 }
 
+
+const px2remLoader = {
+  loader: 'px2rem-loader',
+  options: {
+    remUnit: 75 //设计稿宽度/10
+  }
+}
+
 exports.cssLoaders = function (options) {
   options = options || {}
 
@@ -28,16 +36,20 @@ exports.cssLoaders = function (options) {
       sourceMap: options.sourceMap
     }
   }
-
+  const lessLoader ={
+  	loader: 'less-loader'
+  }
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
-    const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
+    // const loaders = options.usePostCSS ? [cssLoader, postcssLoader,px2remLoader,lessLoader] : [cssLoader,px2remLoader,lessLoader]
+    const loaders = options.usePostCSS ? [cssLoader, postcssLoader,lessLoader] : [cssLoader,lessLoader]
 
     if (loader) {
       loaders.push({
         loader: loader + '-loader',
         options: Object.assign({}, loaderOptions, {
-          sourceMap: options.sourceMap
+          sourceMap: options.sourceMap,
+          
         })
       })
     }
@@ -75,7 +87,8 @@ exports.styleLoaders = function (options) {
     const loader = loaders[extension]
     output.push({
       test: new RegExp('\\.' + extension + '$'),
-      use: loader
+      use: loader,
+     
     })
   }
 

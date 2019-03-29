@@ -5,8 +5,23 @@ import App from './App'
 import router from './router'
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css';
+// import 'amfe-flexible'
+import 'lib-flexible/flexible.js'
+import '@/css/common.less'
+const axios = require('axios')
 
-Vue.use(Mint);
+import VueAxios from 'vue-axios'
+let axiosInstance = axios.create({
+  // baseURL: 'http://119.23.254.95:81',
+  baseURL: 'https://www.superid.in',
+    transformRequest: function(data) {
+      return Qs.stringify(data)
+  },
+  headers: {'Content-Type': 'application/x-www-form-urlencoded' },
+  // withCredentials: true, //开发环境注释掉
+  
+});
+Vue.use(Mint,VueAxios, axiosInstance);
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
