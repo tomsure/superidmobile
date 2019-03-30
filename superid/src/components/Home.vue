@@ -16,7 +16,7 @@
 </mt-tab-container>
 
 <div class="bottom-bar">
-  <mt-tabbar v-model="selected">
+  <mt-tabbar v-model="selected" :fixed="true">
     <mt-tab-item id="wallet">
       <img slot="icon" src="../assets/logo.png">
        钱包

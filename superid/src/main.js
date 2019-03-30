@@ -8,6 +8,9 @@ import 'mint-ui/lib/style.css';
 // import 'amfe-flexible'
 import 'lib-flexible/flexible.js'
 import '@/css/common.less'
+import "@/assets/icomoon/style.css"
+import '@/css/style.less'
+
 const axios = require('axios')
 
 import VueAxios from 'vue-axios'

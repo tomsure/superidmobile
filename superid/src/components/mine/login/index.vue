@@ -11,7 +11,7 @@
        <mt-button type="primary" class="submit-btn" @click.native="toLogin">立即登录</mt-button>
      </div>
        <div class="footer-box">
-           <div @click="changePassword">忘记密码？</div><div @click="toRegister" >注册</div>
+           <div @click="forgetPassword">忘记密码？</div><div @click="toRegister" >注册</div>
            
             
        </div>
@@ -36,11 +36,12 @@ export default {
     toLogin(){
       this.$router.push({path:'/mine'})
     },
-    changePassword(){
-      this.$router.push({path:'/changePassword'})
+    forgetPassword(){
+      alert('change')
+      this.$router.push({path:'/forgetPassword'})
     },
     toRegister(){
-       alert(123)
+       alert('register')
        this.$router.push({path:'/register'})
     }
 

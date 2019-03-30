@@ -5,7 +5,16 @@ import Asset from '@/components/mine/asset/index.vue'
 import Login from '@/components/mine/login/index.vue'
 import register from '@/components/mine/register/index.vue'
 import Mine from '@/components/mine/index.vue'
-import changePassword from '@/components/mine/setting/changePassword.vue'
+import forgetPassword from '@/components/mine/setting/forgetPassword.vue'
+import resetPassword from '@/components/mine/setting/resetPassword.vue'
+import verificationCode from '@/components/mine/setting/verificationCode.vue'
+import receipt from '@/components/wallet/receipt/index.vue'
+import selectCoin from '@/components/wallet/transfer/selectCoin/index.vue'
+import transfer from '@/components/wallet/transfer/index.vue'
+import assetTypeList from '@/components/wallet/receipt/assetTypeList.vue'
+import share from '@/components/mine/share.vue'
+
+
 
 Vue.use(Router)
 
@@ -32,14 +41,49 @@ export default new Router({
       component: register
     },
     {
-      path: '/changePassword',
-      name: 'changePassword',
-      component: changePassword
+      path: '/forgetPassword',
+      name: 'forgetPassword',
+      component: forgetPassword
+    },
+    {
+      path: '/verificationCode',  //获取验证码
+      name: 'verificationCode',
+      component: verificationCode
+    },
+    {
+      path: '/resetPassword', 
+      name: 'resetPassword',
+      component: resetPassword
     },
     {
       path: '/asset',
       name: 'Asset',
       component: Asset
+    },
+    { //收款
+      path: '/receipt',
+      name: 'receipt',
+      component: receipt
+    },
+    { //转账
+      path: '/transfer',
+      name: 'transfer',
+      component: transfer
+    },
+    { //代币选择
+      path: '/selectCoin',
+      name: 'selectCoin',
+      component: selectCoin
+    },
+    { //资产类型选择
+      path: '/assetTypeList',
+      name: 'assetTypeList',
+      component: assetTypeList
+    },
+    { //邀请好友
+      path: '/share',
+      name: 'share',
+      component: share
     }
   ]
 })

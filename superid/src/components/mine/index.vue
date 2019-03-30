@@ -9,7 +9,7 @@
       <mt-cell title="账单明细" :is-link="true">
         <img slot="icon" src="../../assets/logo.png" width="24" height="24">
       </mt-cell>
-      <mt-cell title="邀请好友" :is-link="true">
+      <mt-cell title="邀请好友" :is-link="true" to='/share' >
         <img slot="icon" src="../../assets/logo.png" width="24" height="24">
       </mt-cell>
       <mt-cell title="我的分红" :is-link="true">
