@@ -8,16 +8,16 @@
             <div class="logo">
            <img src="../../../assets/1.png"   alt="">
          </div>
-        <div>name</div>
+        <div style="margin-top:0.2rem;">{{userName}}</div>
           </div>
       </div>
       <div  class="topc top-right">
         <div style="display:flex;">
           <div style="flex:1;">
-          <div>220022</div>
-          <div style="font-sise:0.4rem!important;">资产</div>
+          <div class="total-data">{{balance}}</div>
+          <div  class="assets-text">总资产($)</div>
         </div>
-         <span style="flex:1;margin-left:auto;position:relative;left:1rem;top:10px;font-size:20px;" @click="toAsset">></span>
+         <span style="flex:1;margin-left:auto;position:fixed;left:9.3rem;top:40px;font-size:0.4264392324093817rem;" class="icon--2" @click="toAsset"></span>
         </div>
         </div>
 
@@ -25,20 +25,20 @@
       
    
     <div class="header-bottom" style="">
-      <div style="flex:1;text-align:center;border-right:1px solid gray;">
-        <div class="noPadding">
+      <div style="flex:1;text-align:center;border-right:1px solid #324C7B;">
+        <div class="noPadding assets-text">
           可用余额($)
         </div>
-        <div class="noPadding">
-          2166.56
+        <div class="noPadding assets-data">
+           {{available}}
         </div>
       </div>
       <div style="flex:1;text-align:center;">
-        <div class="noPadding">
+        <div class="noPadding assets-text">
          昨日收益($)
         </div>
-        <div class="noPadding">
-            +2132
+        <div class="noPadding assets-data">
+            +1232232
         </div>
       </div>
     </div>
@@ -46,12 +46,27 @@
 </template>
 
 <script>
+import  {requestPost,requestGet} from '@/api/api.js'
 export default {
   data () {
     return {
+
+       logUrl:'', //头像
+      userName:'', //用户名
+      balance:'',//总资产
+      available:'', //可用余额
+      sesterdayEarnings:'' //昨日收益
+
     };
   },
-
+  props:[],
+  created(){
+   this.getAssets()
+  },
+  mounted () {
+     this.userName=JSON.parse(localStorage.getItem('user_info')).username
+     this.asstes=JSON.parse(localStorage.getItem('user_info')).asstes
+  },
   components: {},
 
   computed: {},
@@ -60,7 +75,19 @@ export default {
     toAsset(){
       
       this.$router.push({name: 'Asset'})
+    },
+    getAssets(){
+         
+        // alert(localStorage.getItem('token'))
+      requestGet('api/v1/asset',).then(res=>{
+         if(res.data.status='success'){
+           this.balance=res.data.data.balance
+           this.available=res.data.data.available
+         }
+        
+      })
     }
+
   }
 }
 
@@ -102,7 +129,7 @@ export default {
   .header-bottom{
     display:flex;
     text-align:center;
-    border-top:1px solid gray;
+    border-top:1px solid #324C7B;
    
     
   }
@@ -119,4 +146,19 @@ export default {
   .noPadding{
     padding: 0!important;
   }
+  .icon--2::before{
+    color: white;
+  }
+  
+   .assets-data{
+     
+      font-size:0.373134328358209rem;
+   }
+   .assets-text{
+     font-size: 0.3198294243070362rem;
+     margin-bottom: 0.2rem;
+   }
+   .total-data{
+     font-size: 0.5863539445628998rem;
+   }
 </style>

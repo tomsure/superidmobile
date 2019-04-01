@@ -14,11 +14,17 @@
            <div @click="forgetPassword">忘记密码？</div><div @click="toRegister" >注册</div>
            
             
+
        </div>
   </div>
 </template>
 
 <script>
+
+ import {requestPost } from '@/api/api.js'
+ import {setToken} from '@/utils/auth.js'
+import { Toast } from 'mint-ui';
+
 export default {
   data () {
     return {
@@ -34,14 +40,47 @@ export default {
 
   methods: {
     toLogin(){
-      this.$router.push({path:'/mine'})
+         requestPost('/api/v1/user/mobile_login',
+     {
+                mobile: "13798525640" ,
+                password: "test123",
+                mobile_prefix: "86",
+      }
+         
+         ).then(res =>{
+          if(res.data.status=='fial'){
+                 Toast({
+            message: res.msg,
+            position: 'top',
+            duration: 2000
+          });
+          }else if(res.data.status==='success'){
+          
+         
+              Toast({
+            message: '登录成功',
+            position: 'top',
+            duration: 2000
+          });
+           localStorage.setItem("user_info",JSON.stringify(res.data.data))
+          //  console.log(typeof JSON.stringify(res.data.data))
+           console.log(typeof JSON.parse(localStorage.getItem('user_info')))
+           setToken(res.data.data.token)
+            
+            this.$router.push({path:'/',query:{status:'login'}})
+              // console.log(res.data.data)
+            
+            
+          }
+         })
+     
     },
     forgetPassword(){
       alert('change')
       this.$router.push({path:'/forgetPassword'})
     },
     toRegister(){
-       alert('register')
+       
        this.$router.push({path:'/register'})
     }
 

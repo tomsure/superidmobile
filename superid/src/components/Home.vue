@@ -8,7 +8,7 @@
        <moneyMange></moneyMange>
   </mt-tab-container-item>
   <mt-tab-container-item id="find">
-    three
+        three
   </mt-tab-container-item>
   <mt-tab-container-item id="mine">
       <mine></mine>
@@ -18,19 +18,19 @@
 <div class="bottom-bar">
   <mt-tabbar v-model="selected" :fixed="true">
     <mt-tab-item id="wallet">
-      <img slot="icon" src="../assets/logo.png">
+       <span slot="icon" class="icon-5"></span>
        钱包
     </mt-tab-item>
     <mt-tab-item id="moneyMange">
-      <img slot="icon" src="../assets/logo.png">
+       <span slot="icon" class="icon-4"></span>
       理财
     </mt-tab-item>
     <mt-tab-item id="find">
-      <img slot="icon" src="../assets/logo.png">
+       <span slot="icon" class="icon-12"></span>
       发现
     </mt-tab-item>
     <mt-tab-item id="mine">
-      <img slot="icon" src="../assets/logo.png">
+      <span slot="icon" class="icon-19"></span>
       我的
     </mt-tab-item>
   </mt-tabbar>
@@ -50,9 +50,27 @@ export default {
     return {
      selected:'moneyMange'
     }
+  },
+  created () {
+    if(this.$route.query.status=='login'){
+      this.selected='mine'
+    }
+    
   }
  }
 </script>
 
 <style lang="" scoped>
+ [class|=icon]::before{
+     color: black;
+     font-size: 0.5rem;
+     position: relative;
+     top: 0.1rem;
+   }
+   .icon-4::before{
+    font-size: 0.8rem;
+    right: 0.1rem;
+    top: 0;
+    bottom: 0.1rem;
+   }
 </style>

@@ -21,7 +21,7 @@
              我的专属邀请码
           </div>
           <div class="share-t share-num">
-            892424
+           {{uid}}
           </div>
           <div class="share-t">
               <button class="share-btn">立即邀请</button>
@@ -60,9 +60,12 @@ export default {
   name: '',
   data() { 
     return {
-
+     uid:''
     }
-  }
+      },
+  created(){
+       this.uid=JSON.parse(localStorage.getItem('user_info')).uid
+    }
  }
 </script>
 
