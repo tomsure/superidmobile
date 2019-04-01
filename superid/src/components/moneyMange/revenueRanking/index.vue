@@ -9,12 +9,10 @@
 
 <!-- tab-container -->
 <mt-tab-container v-model="selected">
-  <mt-tab-container-item id="all">
+  <mt-tab-container-item id="all" >
     <!-- <mt-cell  :title="'内容 '" /> -->
-     <profitList></profitList>
-      <profitList></profitList>
-       <profitList></profitList>
-        <profitList></profitList>
+     <profitList v-for="(item,index) in goodsList" yearProfitrate=""   :key='index' @click="toShowData()" ></profitList>
+     
   </mt-tab-container-item>
   <mt-tab-container-item id="fixedPeriod">
     <mt-cell  :title="'测试 '" />
@@ -29,6 +27,7 @@
 <script>
 
 import profitList from '@/components/moneyMange/revenueRanking/ProfitList/index.vue'
+import requestPost from '@/api/api'
 export default {
   name: '',
   components:{
@@ -36,8 +35,22 @@ export default {
   },
   data() { 
     return {
-     selected:'all'
+     selected:'all',
+     goodsList:[]
     }
+  },
+  created(){
+       requestPost('/api/v1/goods_list',{
+
+       }).then(res=>{
+          //  this.goodsList=res.data
+            if(res.status=="success" && res.data!=[]){
+               res.data.forEach(item => {
+                   
+               });
+            }
+           
+       }) 
   }
  }
 </script>
