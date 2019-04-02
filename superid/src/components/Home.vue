@@ -2,13 +2,13 @@
   <div class="">
   <mt-tab-container v-model="selected">
   <mt-tab-container-item id="wallet">
-        one
+        <wallet></wallet>
   </mt-tab-container-item>
   <mt-tab-container-item id="moneyMange">
        <moneyMange></moneyMange>
   </mt-tab-container-item>
   <mt-tab-container-item id="find">
-        three
+        暂无数据
   </mt-tab-container-item>
   <mt-tab-container-item id="mine">
       <mine></mine>
@@ -39,12 +39,13 @@
 </template>
 
 <script>
+import wallet from '@/components/wallet/index.vue'
  import moneyMange from '@/components/moneyMange/index.vue'
  import mine from '@/components/mine/index.vue'
 export default {
   name: '',
   components:{
-   moneyMange,mine
+   moneyMange,mine,wallet
   },
   data() { 
     return {

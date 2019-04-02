@@ -9,12 +9,15 @@ import 'mint-ui/lib/style.css';
 import 'lib-flexible/flexible.js'
 import '@/css/common.less'
 import "@/assets/icomoon/style.css"
+// import "@/css/style.css"
+
 import '@/css/style.less'
 import store from './store/index.js'
 const axios = require('axios')
 
 import VueAxios from 'vue-axios'
-
+import VueClipboard from 'vue-clipboard2'
+Vue.use(VueClipboard)
 let axiosInstance = axios.create({
   // baseURL: 'http://119.23.254.95:81',
   baseURL: 'https://www.superid.in',

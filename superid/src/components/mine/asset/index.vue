@@ -7,18 +7,18 @@
       </router-link>
     </mt-header>
      <div class="header-content">
-         <div class="asset-data center"><span style="font-size:0.373134328358209rem;">资产总览($)</span><span></span>***</div>
+         <div class="asset-data center"><span style="font-size:0.373134328358209rem;">资产总览($)</span><span class="icon-16" @click="setText"></span></div>
          <div class="asset-data center t-font-size">
-             333,2322
+            {{totalAsset}}
          </div>
          <div class="t-money">
            <div>
               <div class="b-text">可用金额</div>
-              <div>2212,11</div>
+              <div> {{balance}}</div>
            </div>
            <div>
              <div class="b-text">昨日收益</div>
-             <div>+12331</div>
+             <div> +{{yesterdayProfit}}</div>
            </div>
          </div>
      </div>
@@ -30,18 +30,45 @@
 
 <script>
  import AssetList from '@/components/mine/asset/assetList/index.vue'
+ import {requestGet } from '@/api/api.js'
 export default {
   data() {
-    return {};
+    return {
+       totalAsset:'',//总资产
+      balance:'', //可用余额
+      yesterdayProfit:'' //昨日收益
+    };
   },
 
   components: {
     AssetList
   },
-
+   created(){
+     this.getAssets()
+   },
   computed: {},
 
-  methods: {}
+  methods: {
+    getAssets(){
+         
+        
+      requestGet('api/v1/asset').then(res=>{
+         if(res.data.status='success'){
+            this.totalAsset=res.data.data.total_asset
+           this.balance=res.data.data.balance
+            
+           this.yesterdayProfit=res.data.data.yesterday_profit
+
+         }
+        
+      })
+    },
+    setText(){
+      // if(){
+
+      // }
+    }
+  }
 };
 </script>
 <style  scoped>
@@ -73,5 +100,9 @@ export default {
   }
   .b-text{
     margin-bottom: 0.2rem;
+  }
+  .icon-16::before{
+    /* font-size: */
+    color: white;
   }
 </style>

@@ -11,14 +11,17 @@
 <mt-tab-container v-model="selected">
   <mt-tab-container-item id="all" >
     <!-- <mt-cell  :title="'内容 '" /> -->
-     <profitList v-for="(item,index) in goodsList" yearProfitrate=""   :key='index' @click="toShowData()" ></profitList>
+     暂无数据
+     <!-- <profitList v-for="(item,index) in goodsList" yearProfitrate=""   :key='index' @click="toShowData()" ></profitList> -->
      
   </mt-tab-container-item>
   <mt-tab-container-item id="fixedPeriod">
-    <mt-cell  :title="'测试 '" />
+    暂无数据
+    <!-- <mt-cell  :title="'暂无数据 '" /> -->
   </mt-tab-container-item>
   <mt-tab-container-item id="ant">
-    <mt-cell  :title="'选项 ' " />
+    暂无数据
+    <!-- <mt-cell  :title="'暂无数据 ' " /> -->
   </mt-tab-container-item>
 </mt-tab-container>
   </div>
@@ -69,5 +72,8 @@ export default {
 }
 .mint-navbar{
 background: white;
+}
+.mint-navbar .mint-tab-item.is-selected{
+ border-bottom-width:0.1rem; 
 }
 </style>

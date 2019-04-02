@@ -7,7 +7,9 @@
       </router-link>
     </mt-header>
     <mt-field label="手机号码" placeholder="请输入手机号码" type="tel" v-model="phone"></mt-field>
-    <mt-button type="primary" size="large" @click="toInputCode">获取验证码</mt-button>
+    <div class="btn-box">
+      <mt-button type="primary" size="large" @click="toInputCode">获取验证码</mt-button>
+    </div>
   </div>
 </template>
 
@@ -49,4 +51,9 @@ export default {
 };
 </script>
 <style  scoped>
+  .btn-box {
+     width: 90%;
+     margin: 1rem auto;
+     
+  }
 </style>

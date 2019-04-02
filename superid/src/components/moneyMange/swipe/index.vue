@@ -1,13 +1,24 @@
 <template>
   <div>
-    <mt-swipe :auto="0" :show-indicators="false">
+    <!-- <mt-swipe :auto="0" :show-indicators="false">
       <mt-swipe-item v-for="item in items" :key="item.id">
         <a :href="item.href">
-          <img :src="item.url" class="img"/>
+          <img src="@/assets/imgs/bg01.png" class="img"/>
           <span class="desc">{{item.title}}</span>
         </a>
       </mt-swipe-item>
-    </mt-swipe>
+    </mt-swipe> -->
+      <div class="swipe-img" @click="toDownLoad" >
+           <img src="@/assets/imgs/bg01.png" alt="">
+           <div class="text-1">
+             <div class="ft-28">
+             全面上线
+           </div>
+           <div class="bottom ft-16">
+           BlockBank钱包App推出海量精选量化产品
+           </div>
+           </div>
+      </div>
   </div>
 </template>
  
@@ -24,9 +35,15 @@
       return {
         items: [{
         //   title: '你的名字',
-          href: 'http://google.com',
-          url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553931780802&di=1e287e5d8cd12675388091411bcb6ab1&imgtype=0&src=http%3A%2F%2F2d.zol-img.com.cn%2Fproduct%2F124_500x2000%2F309%2FceyVdhB71o7GM.jpg'
+          href: '#',
+          url: '@/assets/imgs/bg01.png'
         }]
+      }
+    },
+    methods: {
+      toDownLoad(){
+          // alert(123)
+         this.$router.push({path:'/downLoad'})
       }
     }
   }
@@ -51,4 +68,19 @@
     position: absolute;
     bottom: 0;
   } */
+   .swipe-img{
+     text-align: center;
+     color: white;
+     /* background: url('@/assets/imgs/bg01.png') */
+   }
+   .top{
+    font-size:''
+   }
+   .bottom{
+    font-size:''
+   }
+   .text-1{
+     position: relative;
+     bottom:3rem;
+   }
 </style>

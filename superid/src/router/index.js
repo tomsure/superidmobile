@@ -13,8 +13,11 @@ import selectCoin from '@/components/wallet/transfer/selectCoin/index.vue'
 import transfer from '@/components/wallet/transfer/index.vue'
 import assetTypeList from '@/components/wallet/receipt/assetTypeList.vue'
 import share from '@/components/mine/share.vue'
-
-
+import regularIntervals from '@/components/moneyMange/regularIntervals.vue'
+import productDetails from '@/components/moneyMange/productDetails.vue'
+import walletMange from '@/components/wallet/walletMange/index.vue'
+import setting from '@/components/mine/setting/setting.vue'
+import downLoad from '@/components/moneyMange/downLoad/index.vue'
 
 Vue.use(Router)
 
@@ -84,6 +87,36 @@ export default new Router({
       path: '/share',
       name: 'share',
       component: share
+    },
+    
+    {  
+      path: '/regularIntervals',
+      name: 'regularIntervals',
+      component: regularIntervals
+    },
+    { //产品详情
+      path:"/productDetails",
+      name:"/productDetails",
+      component:productDetails
+    },
+    { //钱包管理
+      path:"/walletMange",
+      name:"/walletMange",
+      component:walletMange
+
+    },
+    { //个人设置
+      path:"/setting",
+      name:"setting",
+      component:setting
+
+    },
+    { //个人设置
+      path:"/downLoad",
+      name:"downLoad",
+      component:downLoad
+
     }
+    
   ]
 })

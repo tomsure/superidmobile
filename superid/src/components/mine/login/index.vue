@@ -42,8 +42,8 @@ export default {
     toLogin(){
          requestPost('/api/v1/user/mobile_login',
      {
-                mobile: "13798525640" ,
-                password: "test123",
+                mobile: this.username ,
+                password:this.password,
                 mobile_prefix: "86",
       }
          
@@ -76,7 +76,7 @@ export default {
      
     },
     forgetPassword(){
-      alert('change')
+      // alert('change')
       this.$router.push({path:'/forgetPassword'})
     },
     toRegister(){
@@ -95,6 +95,7 @@ export default {
  }
  .btn-box{
    text-align:center;
+   margin-top: 1rem;
  }
  .loginImg{
     width:2.665245202558635rem;
@@ -113,7 +114,12 @@ export default {
     
  }
   .footer-box{
+
+      position: fixed;
+      width: 100%;
+      bottom: 0;
        margin-top: 2rem;
+       margin-bottom: 0.5rem;
        display: flex;
        justify-content: space-between;
        div{

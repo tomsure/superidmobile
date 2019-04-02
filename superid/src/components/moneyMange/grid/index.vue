@@ -4,7 +4,7 @@
           <div class="icon-box"><span class="icon-15"></span></div>
           <div>科创金服</div>
       </div>
-      <div>
+      <div @click="toRegularIntervals">
           <div class="icon-box"><span class="icon-18"></span></div>
           <div>定期理财</div>
       </div>
@@ -30,6 +30,12 @@ export default {
     return {
 
     }
+  },
+  methods:{
+      toRegularIntervals(){
+    //   alert(123)
+      this.$router.push({path:'/regularIntervals'})
+  }
   }
  }
 </script>
@@ -38,7 +44,7 @@ export default {
   .grid-box{
       display: flex;
       justify-content:space-around;
-      margin-top: 0.7462686567164179rem;
+      margin-top:-1rem;
   }
   .icon-box{
       text-align: center;

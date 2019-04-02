@@ -6,7 +6,7 @@
       <div  class="topc top-left">
           <div class=""> 
             <div class="logo">
-           <img src="../../../assets/1.png"   alt="">
+           <img src="../../../assets/logo.png"   alt="">
          </div>
         <div style="margin-top:0.2rem;">{{userName}}</div>
           </div>
@@ -14,7 +14,7 @@
       <div  class="topc top-right">
         <div style="display:flex;">
           <div style="flex:1;">
-          <div class="total-data">{{balance}}</div>
+          <div class="total-data">{{totalAsset}}</div>
           <div  class="assets-text">总资产($)</div>
         </div>
          <span style="flex:1;margin-left:auto;position:fixed;left:9.3rem;top:40px;font-size:0.4264392324093817rem;" class="icon--2" @click="toAsset"></span>
@@ -30,7 +30,7 @@
           可用余额($)
         </div>
         <div class="noPadding assets-data">
-           {{available}}
+           {{balance}}
         </div>
       </div>
       <div style="flex:1;text-align:center;">
@@ -38,7 +38,7 @@
          昨日收益($)
         </div>
         <div class="noPadding assets-data">
-            +1232232
+            +{{yesterdayProfit}}
         </div>
       </div>
     </div>
@@ -53,9 +53,9 @@ export default {
 
        logUrl:'', //头像
       userName:'', //用户名
-      balance:'',//总资产
-      available:'', //可用余额
-      sesterdayEarnings:'' //昨日收益
+      totalAsset:'',//总资产
+      balance:'', //可用余额
+      yesterdayProfit:'' //昨日收益
 
     };
   },
@@ -64,8 +64,11 @@ export default {
    this.getAssets()
   },
   mounted () {
-     this.userName=JSON.parse(localStorage.getItem('user_info')).username
+      if(localStorage.getItem('user_info')){
+       this.userName=JSON.parse(localStorage.getItem('user_info')).username
      this.asstes=JSON.parse(localStorage.getItem('user_info')).asstes
+      }
+     
   },
   components: {},
 
@@ -81,8 +84,11 @@ export default {
         // alert(localStorage.getItem('token'))
       requestGet('api/v1/asset',).then(res=>{
          if(res.data.status='success'){
+            this.totalAsset=res.data.data.total_asset
            this.balance=res.data.data.balance
-           this.available=res.data.data.available
+            
+           this.yesterdayProfit=res.data.data.yesterday_profit
+
          }
         
       })

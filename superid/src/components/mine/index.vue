@@ -3,7 +3,7 @@
   <div>
     <mineHeader></mineHeader>
     <div>
-      <mt-cell title="钱包管理" :is-link="true">
+      <mt-cell title="钱包管理" to="/walletMange" :is-link="true">
         <span slot="icon" class="icon-5"></span>
       </mt-cell>
       <mt-cell title="账单明细" :is-link="true">
@@ -17,7 +17,7 @@
       </mt-cell>
     </div>
     <div>
-      <mt-cell title="个人设置" :is-link="true">
+      <mt-cell title="个人设置" to="/setting" :is-link="true">
         <span slot="icon" class="icon-10"></span>
       </mt-cell>
       <mt-cell title="意见反馈" :is-link="true">
@@ -38,9 +38,13 @@ export default {
     return {};
   },
 
-  created() {},
+  created() {
+      if(!localStorage.getItem('user_info')){
+          this.$router.push({name:'Login'})
+      }
+  },
   mounted() {
-    // this.$router.push({name:'Login'})
+    
   },
   computed: {},
 

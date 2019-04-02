@@ -1,12 +1,11 @@
 <!--  -->
 <template>
   <div>
-     <mt-header title="注册">
-  <router-link to="/" slot="left">
-    <mt-button icon="back"></mt-button>
-  </router-link>
- 
-</mt-header>
+    <mt-header title="注册">
+      <router-link to="/login" slot="left">
+        <mt-button icon="back"></mt-button>
+      </router-link>
+    </mt-header>
     <mt-field label="手机号" placeholder="请输入手机号" type="tel" v-model="ruleForm.phone"></mt-field>
     <mt-field
       label="密码"
@@ -15,21 +14,25 @@
       :disableClear="true"
       v-model="ruleForm.pwd"
     >
-      <span class="icon-16" @click="show"></span>
+      <span class="icon-16" @click="show1"></span>
     </mt-field>
     <mt-field label="验证码" placeholder="请输入验证码" type="number" v-model="ruleForm.codes">
-      <mt-button size="small" class="code-btn" @click="sendCode">获取</mt-button>
+      <!-- <mt-button size="small" class="code-btn" @click="sendCode">获取</mt-button>
+      -->
+      <mt-button class="register-msg-btn code-btn" v-show="show" v-on:click="getCode">获取</mt-button>
+      <mt-button class="register-msg-btn code-btn" v-show="!show">{{count}} s</mt-button>
     </mt-field>
     <mt-field label="邀请码" placeholder="请输入邀请码(选填)" v-model="ruleForm.invite_id" class="myinput"></mt-field>
     <div class="btn-box">
-      <mt-button type="primary" class="submit-btn" @click.native="register" >注册</mt-button>
+      <mt-button type="primary" class="submit-btn" @click.native="register">注册</mt-button>
     </div>
   </div>
 </template>
 
 <script>
 import { requestPost } from "@/api/api.js";
-import { Toast } from 'mint-ui';
+import { hex_sha1 } from "@/utils/sha1.js";
+import { Toast } from "mint-ui";
 export default {
   data() {
     return {
@@ -40,13 +43,16 @@ export default {
         invite_id: "",
         pwd: "",
         checkpwd: "",
-        type:'1'
+        type: "1"
       },
       phone: "",
       username: "",
       password: "",
       number: "",
-      pwd: "password"
+      pwd: "password",
+      show:true,    
+      timer:null,
+      count:''
     };
   },
 
@@ -56,51 +62,71 @@ export default {
 
   methods: {
     register() {
-       requestPost('/api/v1/user',{
-                mobile_prefix: this.mobilePrefix,
-                type:'1',
-                mobile: this.ruleForm.phone,
-                password: this.ruleForm.pwd,
-                invite_id: this.ruleForm.invite_id,
-                code: this.ruleForm.codes,
-       }).then(res=>{
-         if(res.status=='success'){
-         this.$router.push({path:'/login'})
-         }else{
-           Toast({
+      requestPost("/api/v1/user", {
+        mobile_prefix: "86",
+        type: "1",
+        mobile: this.ruleForm.phone,
+        password: hex_sha1(this.ruleForm.pwd),
+        invite_id: this.ruleForm.invite_id,
+        code: this.ruleForm.codes
+      }).then(res => {
+        if (res.status == "success") {
+
+          this.$router.push({ path: "/login" });
+        } else {
+          Toast({
             message: res.data.msg,
-            position: 'top',
+            position: "top",
             duration: 2000
           });
-         }
-       })
-      
+        }
+      });
     },
-    show() {
+    show1() {
       if (this.pwd == "password") {
         this.pwd = "text";
       } else {
         this.pwd = "password";
       }
     },
+    getCode() {
+      this.show = false;
+      const TIME_COUNT = 60;
+      if (!this.timer) {
+        this.count = TIME_COUNT;
+        this.sendCode()
+        this.show = false;
+
+        this.timer = setInterval(() => {
+          if (this.count > 0 && this.count <= TIME_COUNT) {
+            this.count--;
+          } else {
+            this.show = true;
+            clearInterval(this.timer);
+            this.timer = null;
+          }
+        }, 1000);
+      }
+    },
+
     sendCode() {
       requestPost("/api/v1/user/send_code", {
-          value:"13211221111",
-          type: "121121",
-          mobile_prefix: "86",
+        value: this.ruleForm.phone,
+        type: "1",
+        mobile_prefix: "86"
       }).then(res => {
-          console.log( res)
-       
-        if(res.data.status="fail"){
-           Toast({
+        console.log(res);
+
+        if ((res.data.status == "fail")) {
+          Toast({
             message: res.data.msg,
-            position: 'top',
+            position: "top",
             duration: 2000
           });
-        }else if(res.data.status="success") {
-           Toast({
-            message: '发送成功',
-            position: 'top',
+        } else if ((res.data.status == "success")) {
+          Toast({
+            message: "发送成功",
+            position: "top",
             duration: 2000
           });
         }
@@ -116,6 +142,7 @@ export default {
 }
 .btn-box {
   text-align: center;
+  margin-top: 1rem
 }
 .icon-16::before {
   color: gray;
