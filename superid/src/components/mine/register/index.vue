@@ -20,7 +20,7 @@
       <!-- <mt-button size="small" class="code-btn" @click="sendCode">获取</mt-button>
       -->
       <mt-button class="register-msg-btn code-btn" v-show="show" v-on:click="getCode">获取</mt-button>
-      <mt-button class="register-msg-btn code-btn" v-show="!show">{{count}} s</mt-button>
+      <mt-button class="register-msg-btn code-btn"  v-show="!show">{{count}} s</mt-button>
     </mt-field>
     <mt-field label="邀请码" placeholder="请输入邀请码(选填)" v-model="ruleForm.invite_id" class="myinput"></mt-field>
     <div class="btn-box">
@@ -70,8 +70,12 @@ export default {
         invite_id: this.ruleForm.invite_id,
         code: this.ruleForm.codes
       }).then(res => {
-        if (res.status == "success") {
-
+        if (res.data.status == "success") {
+           Toast({
+            message: res.data.msg,
+            position: "top",
+            duration: 2000
+          });
           this.$router.push({ path: "/login" });
         } else {
           Toast({
@@ -115,7 +119,7 @@ export default {
         type: "1",
         mobile_prefix: "86"
       }).then(res => {
-        console.log(res);
+        // console.log(res);
 
         if ((res.data.status == "fail")) {
           Toast({

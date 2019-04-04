@@ -1,14 +1,15 @@
 <template>
   <div class="grid-box component-content">
-      <div class="">
-          <div class="icon-box"><span class="icon-15"></span></div>
-          <div>科创金服</div>
-      </div>
+      
       <div @click="toRegularIntervals">
           <div class="icon-box"><span class="icon-18"></span></div>
           <div>定期理财</div>
       </div>
-      <div> 
+      <div class="">
+          <div class="icon-box"><span class="icon-15"></span></div>
+          <div>科创金服</div>
+      </div>
+       <div> 
           <div class="icon-box"><span class="icon-8"></span></div>
           <div>余币宝</div>
       </div>
@@ -44,7 +45,9 @@ export default {
   .grid-box{
       display: flex;
       justify-content:space-around;
-      margin-top:-1rem;
+      margin-top:-1.6rem;
+      background: white;
+      padding: 0.5rem 0;
   }
   .icon-box{
       text-align: center;

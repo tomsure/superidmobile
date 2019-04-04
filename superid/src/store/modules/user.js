@@ -7,7 +7,7 @@ const user={
     getters:{    //监听数据改变
       listenToken:function(state){
          
-        console.log(state.token)
+        // console.log(state.token)
       }
     },
   actions:{  //定义间接方法

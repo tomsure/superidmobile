@@ -11,7 +11,17 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},
+    proxyTable: {
 
+      //处理跨域
+      '/api': {
+        target: 'https://www.superid.in',//设置调用的接口域名和端口号
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/'//这里理解成用‘/api’代替target里面的地址，后面组件中我们调接口时直接用api代替 比如我要调用'http://182.131.18.102:8602/login/login'，直接写'/api/login/login'即可
+        }
+      }
+  },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined

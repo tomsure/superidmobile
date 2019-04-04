@@ -1,4 +1,6 @@
+
 <template>
+<!-- // 原型精选产品 -->
   <div class="component-content">
      <h3 class="box-title">精选产品</h3>
       <div class="box-c">
@@ -37,7 +39,7 @@ export default {
     }
   },
   created(){
-      
+    
   }
  }
 </script>

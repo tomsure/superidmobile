@@ -54,10 +54,13 @@ export default {
         
       requestGet('api/v1/asset').then(res=>{
          if(res.data.status='success'){
-            this.totalAsset=res.data.data.total_asset
+            if(res.data.data){
+          this.totalAsset=res.data.data.total_asset
            this.balance=res.data.data.balance
             
            this.yesterdayProfit=res.data.data.yesterday_profit
+            }
+            
 
          }
         

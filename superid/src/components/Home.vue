@@ -8,7 +8,7 @@
        <moneyMange></moneyMange>
   </mt-tab-container-item>
   <mt-tab-container-item id="find">
-        暂无数据
+          <Find></Find>
   </mt-tab-container-item>
   <mt-tab-container-item id="mine">
       <mine></mine>
@@ -19,7 +19,7 @@
   <mt-tabbar v-model="selected" :fixed="true">
     <mt-tab-item id="wallet">
        <span slot="icon" class="icon-5"></span>
-       钱包
+       资产
     </mt-tab-item>
     <mt-tab-item id="moneyMange">
        <span slot="icon" class="icon-4"></span>
@@ -42,10 +42,11 @@
 import wallet from '@/components/wallet/index.vue'
  import moneyMange from '@/components/moneyMange/index.vue'
  import mine from '@/components/mine/index.vue'
+ import Find from '@/components/find/index.vue'
 export default {
   name: '',
   components:{
-   moneyMange,mine,wallet
+   moneyMange,mine,wallet,Find
   },
   data() { 
     return {

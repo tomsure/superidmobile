@@ -18,6 +18,13 @@ import productDetails from '@/components/moneyMange/productDetails.vue'
 import walletMange from '@/components/wallet/walletMange/index.vue'
 import setting from '@/components/mine/setting/setting.vue'
 import downLoad from '@/components/moneyMange/downLoad/index.vue'
+import buy from '@/components/moneyMange/goodProducts/goods/buy.vue'
+import goodsDetails from '@/components/moneyMange/goodProducts/goods/details.vue'
+import pay from '@/components/moneyMange/goodProducts/goods/pay.vue'
+import orderoInfo from '@/components/moneyMange/goodProducts/orderInfo.vue'
+import paywayList from '@/components/moneyMange/goodProducts/payway/paywayList.vue'
+
+
 
 Vue.use(Router)
 
@@ -116,7 +123,32 @@ export default new Router({
       name:"downLoad",
       component:downLoad
 
+    },
+    {
+      path:"/buy",
+      name:"buy",
+      component:buy
+    },
+    {
+      path:"/goodsDetails",
+      name:"goodsDetails",
+      component:goodsDetails
+    },
+    {
+      path:"/pay",
+      name:"pay",
+      component:pay
+    },
+    {
+      path:"/orderoInfo",
+      name:"orderoInfo",
+      component:orderoInfo
+    },
+    {
+      path:"/paywayList",
+      name:"paywayList",
+      component:paywayList
     }
-    
+   
   ]
 })
