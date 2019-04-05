@@ -1,12 +1,9 @@
 <template>
- <div>
-  
   <nav class="accWrapper">
     <div class="accTitle" @click="toggleList">
        <div>
-          <!-- <span class="data1.icon"></span> -->
-          <span class="usdt-icon"><img src="@/assets/usdt.png" alt=""></span>
-      <span class="coin">USDT</span>
+          <span :class="data1.icon"></span>
+      <span class="coin">{{data1.name}}</span>
        </div>
        <div style="display:flex;just-content:space-between;">
          <div style="text-align:center;padding:0.35rem;">
@@ -20,44 +17,6 @@
     </div>
    
   </nav>
-  <nav class="accWrapper">
-    <div class="accTitle" @click="toggleList">
-       <div>
-          <span class="icon-btc-01"></span>
-      <span class="coin">BTC</span>
-       </div>
-       <div style="display:flex;just-content:space-between;">
-         <div style="text-align:center;padding:0.35rem;">
-            <div class="ft-16" >123,21313</div>
-         <div class="ft-12">2131313</div>
-         </div>
-         <span class="icon--2"></span>
-       </div>
-       
-       
-    </div>
-   
-  </nav>
-  <nav class="accWrapper">
-    <div class="accTitle" @click="toggleList">
-       <div>
-          <span class="icon-eth-01"></span>
-      <span class="coin">ETH</span>
-       </div>
-       <div style="display:flex;just-content:space-between;">
-         <div style="text-align:center;padding:0.35rem;">
-            <div class="ft-16" >123,21313</div>
-         <div class="ft-12">2131313</div>
-         </div>
-         <span class="icon--2"></span>
-       </div>
-       
-       
-    </div>
-   
-  </nav>
- </div>
-   
 </template>
  
 <script>
@@ -99,7 +58,9 @@ export default {
 .accTitle {
   display: flex;
   justify-content: space-between;
-  
+  // align-items: baseline;
+  // height: 50px;
+  // line-height: 50px;
   font-size: 16px;
   background: white;
   text-indent: 1em;
@@ -124,7 +85,7 @@ export default {
   transition: max-height 0.5s ease-in;
 }
 .accListItem {
-  
+  // background-image: url(../assets/1.png);
   
   display: flex;
   justify-content: space-between;
@@ -174,30 +135,4 @@ export default {
     position: relative;
     top: 0.2rem;
 }
- .usdt-icon img{
-      display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    position: relative;
-    top: 0.2rem;
-    margin-right: 0.1rem;
-    }
-    .icon-usdt::before{
-     color:#2b81ee;
-     font-size: 1rem;
-     margin-right: 0.2rem;
-    position: relative;
-    top: 0.2rem;
-    }
-    .icon-btc-01{
-      font-size: 1rem;
-    }
-     .icon-eth-01::before{
-      font-size: 1rem;
-     }
-     .coin{
-       position: relative;
-       top: 0;
-
-     }
 </style>

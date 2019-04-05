@@ -59,11 +59,11 @@
       <div class="grid header-grid  ">
                <div class="item-b">
                  <div class="ft-14">静态收益</div>
-                 <div class="ft-20">3131</div>
+                 <div class="ft-20">3131.00</div>
                </div>
                <div class="item-b">
                  <div class="ft-14">动态收益</div>
-                 <div class="ft-20">1313</div>
+                 <div class="ft-20">1313.00</div>
                </div>
           </div>
       <div class="assets">
@@ -73,7 +73,9 @@
             <span class="add">+</span>
           </div>
         </div>
-        <coinItem v-for="(item,index) in dataList" :key="item.id" :title="item" :data="item">></coinItem>
+        <!-- <coinItem v-for="(item,index) in dataList" :key="item.id" :title="item" :data="item">></coinItem> -->
+        <coinItem >></coinItem> 
+         
       </div>
     </div>
   </div>
@@ -90,9 +92,9 @@ export default {
     return {
       assets: "",
       dataList: [
-         { name: "USDT", id:"AA" },
-          { name: "BTC", id:"SS" }, 
-          { name: "ETH", id:"DD" }
+         { name: "USDT", id:"AA",icon:'icon-usdt coin-icon usdt',count:'' },
+          { name: "BTC", id:"SS",icon:'icon-btc-01 coin-icon btc',count:'' }, 
+          { name: "ETH", id:"DD",icon:'icon-ETH coin-icon',count:'' }
 
       ]
     };
@@ -233,4 +235,7 @@ box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
   // background: white;
   // color: black;
 }
+ .btc,.usdt{
+   font-size: 1.2rem;
+ }
 </style>

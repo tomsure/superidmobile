@@ -5,15 +5,17 @@
           
          <div class="coin-text">
           <div>
-              <span class="icon-ETH"></span>
+              <span class="usdt-icon"><img src="@/assets/usdt.png" alt=""></span>
+              <!-- <span class="icon-usdt"></span> -->
+
           </div>
           <div>
               <span class="coin-name">{{coinName}}</span>
           </div>
          </div>
           <div class="rowt" >
-               <div>11221,21</div>
-               <div>≈ $<span>12311</span></div>
+               <div>1</div>
+               <div>≈ $<span>0.99</span></div>
           </div>
      </div>
      
@@ -46,7 +48,7 @@ export default {
 }
 
 </script>
-<style  scoped>
+<style lang='less'  scoped>
 button:focus{
   outline: none;
 }
@@ -108,4 +110,28 @@ padding: 0.46875rem;
      /* height: 1.5rem; */
      margin-top: 0.4rem;
  }
+//  .usdt-icon{
+//    width: 0.5rem;
+//    height: 0.5rem;
+//    img{
+//      width:100%;
+//      height:100%;
+     
+//    }
+//  }
+    .usdt-icon img{
+      display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    position: relative;
+    top: 0.2rem;
+    margin-right: 0.1rem;
+    }
+    .icon-usdt::before{
+     color:#2b81ee;
+     font-size: 1rem;
+     margin-right: 0.2rem;
+    position: relative;
+    top: 0.2rem;
+    }
 </style>

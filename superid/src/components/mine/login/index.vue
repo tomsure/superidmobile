@@ -47,8 +47,8 @@ export default {
     // });
       requestPost("/api/v1/user/mobile_login", {
         mobile: this.username,
-        // password: hex_sha1(this.password) ,
-        password: this.password ,
+        password: hex_sha1(this.password) ,
+        // password: this.password ,
 
         mobile_prefix: "86"
       }).then(res => {
