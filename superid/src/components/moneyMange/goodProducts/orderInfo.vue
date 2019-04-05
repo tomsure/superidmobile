@@ -16,7 +16,7 @@
            <mt-cell title="购买时间" :value="orderInfoData.create_at"></mt-cell>
            <mt-cell title="付款金额" :value="orderInfoData.money"></mt-cell>
            <mt-cell title="付款比币种金额" :value="orderInfoData.pay_currency_num + orderInfoData.wallet_name"></mt-cell>
-            <mt-cell title="钱包地址" :value="orderInfoData.wallet_addr"></mt-cell>
+            <mt-cell title="钱包地址" class="wallet_addr" :value="orderInfoData.wallet_addr"></mt-cell>
              <mt-cell title="交易哈希值" :value="orderInfoData.wallet_txid"></mt-cell>
              
             
@@ -171,11 +171,19 @@ export default {
  }
   .info-box{
     background: white;
-    width: 90%;
+    // width: 90%;
     padding: 0.2rem;
     margin: 0.2rem auto;
-    border-radius: 0.2rem;
+    // border-radius: 0.2rem;
 
 
   }
+  .mint-cell-wrapper .mint-cell-title{
+  flex: 4!important;
+  }
+  .mint-cell-wrapper{
+    color: white;
+  }
+  
+   
 </style>

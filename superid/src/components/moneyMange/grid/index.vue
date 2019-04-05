@@ -11,7 +11,7 @@
       </div>
        <div> 
           <div class="icon-box"><span class="icon-8"></span></div>
-          <div>余币宝</div>
+          <div>量化产品</div>
       </div>
       <div>
           <div class="icon-box"><span class="icon-14"></span></div>

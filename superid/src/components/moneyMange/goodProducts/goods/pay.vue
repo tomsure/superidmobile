@@ -4,50 +4,59 @@
       <div>
          <div></div>
          <div class="t-center" >
-            <h4 class="status-t">付款中</h4>
-              <div class="qrcode-img">
-                <!-- <img src="@/assets/qrcode.png" alt=""> -->
-                 <div id="qrcode" class="qrcode-box"></div>
-              </div>
-              <div class="t-area">
-                <mt-field  placeholder="请输入交易TXID(交易哈希值)" v-model="txid" type="textarea" rows="2" ></mt-field>
-              </div>
-             <div class="submit-box-common">
-               <button class="submit-btn-common" @click="confirmPay">我已付款</button>
-             </div>
-         </div>
+              <h4 class="status-t">付款中</h4>
+                  <div class="qrcode-img">
+                  
+                    <div id="qrcode" class="qrcode-box"></div>
+                  </div>
+                  <div class="t-area">
+                    <mt-field  placeholder="请输入交易TXID(交易哈希值)" v-model="txid" type="textarea" rows="2" ></mt-field>
+                  </div>
+                <div class="submit-box-common">
+                  <button class="submit-btn-common" @click="confirmPay">我已付款</button>
+                </div>
+              
+                </div>
       </div>
+          
   </div>
 </template>
 
 <script>
 import {requestPost} from  '@/api/api.js'
  import QRCode from 'qrcodejs2';
+ import payModal from '@/components/moneyMange/goodProducts/goods/payModal.vue'
 export default {
   data () {
     return {
-      txid:''
+      txid:'',
+      showModal1:false,
+      aa:'showNone'
     };
   },
-  components: {},
+  components: {
+    payModal
+  },
   computed: {},
   created () {
-    console.log("payData")
+   
      let payData=this.$route.query.payData
-         console.log(payData)
+        
 
          let sendData={
             pay_no:this.$route.query.payData.pay_no,
             order_no:this.$route.query.payData.order_no,
-            pay_at:this.$route.query.payData.pay_at
+            pay_at:this.$route.query.payData.pay_at,
+            wallet_addr:this.$route.query.payData.wallet_addr
            }    
 
            this.$nextTick (function () {
-          this.qrcode('442344');
-        })
+            this.qrcode(this.$route.query.payData.wallet_addr);
+           })
 
   },
   methods: {
+     
     confirmPay(){
      
           let sendData={
@@ -60,8 +69,7 @@ export default {
             pay_currency_num:this.$route.query.payData.pay_currency_num,
             wallet_name:this.$route.query.payData.wallet_name
            }    
-          //  console.log("sendData")
-          //  console.log(sendData)
+        
          let confirmData={
            pay_no:sendData.pay_no,
            txid:this.txid
@@ -121,6 +129,14 @@ export default {
       // padding: 6px; // 利用padding的特性，挤出白边
     }
   }
-
+  // .slideInUp{
+  //   width:300px;
+  //   height:300px;
+  //   background:red;
+  // }
+  .hide{
+  display:none;
+  }
+   
 
 </style>

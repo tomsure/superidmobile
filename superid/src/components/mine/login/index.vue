@@ -21,6 +21,8 @@
 import { requestPost } from "@/api/api.js";
 import { setToken } from "@/utils/auth.js";
 import { Toast } from "mint-ui";
+import { hex_sha1 } from "@/utils/sha1.js";
+
 
 export default {
   data() {
@@ -45,7 +47,7 @@ export default {
     // });
       requestPost("/api/v1/user/mobile_login", {
         mobile: this.username,
-        password: this.password,
+        password: hex_sha1(this.password) ,
         mobile_prefix: "86"
       }).then(res => {
           

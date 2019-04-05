@@ -5,10 +5,12 @@
            <mt-header title="发现">
           </mt-header>
       </div>
+      <div class="box-common"><img src="@/assets/find/05.png" alt=""></div>
       <div class="box-common"><img src="@/assets/find/01.png" alt=""></div>
       <div class="box-common"><img src="@/assets/find/02.png" alt=""></div>
       <div class="box-common"><img src="@/assets/find/03.png" alt=""></div>
       <div class="box-common"><img src="@/assets/find/04.png" alt=""></div>
+      
   </div>
 </template>
 

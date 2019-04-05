@@ -11,7 +11,7 @@ import {requestGet} from '@/api/api.js'
 export default {
   data () {
     return {
-      walletList:[]
+      walletList:[{name: "USDT", id: 9}]
     };
   },
 
@@ -22,7 +22,7 @@ export default {
   computed: {},
   created(){
   requestGet('/api/v1/wallet').then(res=>{
-          this.walletList=res.data.data
+          // this.walletList=res.data.data  //暂时隐藏
    })
   },
   methods: {

@@ -1,0 +1,233 @@
+<style>
+  *{
+      margin: 0px;
+      padding: 0px;
+  }
+  html,body{
+      height: 100%;
+      width:100%;
+  }
+
+
+  .pop_top{
+      width:100%;
+      text-align: center;
+      line-height: 40px;
+      background: rgba(75,75,75,0.8);
+      position: fixed;
+      top: 0;
+      left: 50%;
+      color: white;
+      transform: translate3d(-50%, -100%, 0);
+      transition: .2s ease-out;
+      visibility: hidden;
+      white-space: nowrap;
+      word-break: keep-all;
+      text-overflow: ellipsis;
+  }
+  .pop_show{
+      transform: translate3d(-50%, 0%, 0) ;
+      visibility: visible;
+  }
+
+
+
+
+  .toast{
+      width:100%;
+      height:100%;
+      background: rgba(75,75,75,.8);
+      position: absolute;
+      top: 0px;
+      z-index: 2001;
+      visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition-delay: 0.2s;
+  }
+  .show_toast{
+      visibility: visible;
+  }
+
+  .toast .content{
+      width: 80%;
+      border:1px solid #ddd;
+      border-radius: 5px;
+      background-color: white;
+      visibility: hidden;
+      position: absolute;
+      z-index: 2002;
+      transition: .3s ease;
+      opacity: 0;
+      transform: scale(0.8);
+  }
+  .toast .scale_content{
+      transform: scale(1);
+      transition-delay: 0.15s;
+      visibility: visible;
+      opacity: 1;
+  }
+  .toast_title{
+      line-height: 30px;
+      padding: 5px;
+      text-align: center;
+  }
+  .toast_info{
+      line-height: 30px;
+      padding: 10px;
+      color: #999999;
+      text-align: center;
+  }
+  .toast_btns{
+      border-top: 1px solid #ddd;
+  }
+  .toast_btns button:active{
+      opacity: 0.5;
+  }
+  .toast_btns button{
+      width: 50%;
+      border-width: 0px;
+      float: left;
+      background-color: transparent;
+      padding: 10px;
+      outline:none;
+  }
+  .toast_btns button:nth-child(1){
+      border-right: 1px solid #ddd;
+  }
+  .sure_btn{
+      color: #00a4e4;
+  }
+
+
+  .actionSheet{
+      width:100%;
+      height:100%;
+      background: rgba(75,75,75,.8);
+      position: absolute;
+      top: 0px;
+      z-index: 2001;
+      visibility: hidden;
+      transition-delay: 0.2s;
+      text-align: center;
+      transition: .3s ease;
+  }
+  .show_actionSheet{
+      visibility: visible;
+  }
+  .actionSheet_content{
+      width:100%;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      background-color: #e0e0e0;
+      visibility: hidden;
+      transform: translate(0,100%);
+      transition: .3s ease;
+  }
+  .show_options{
+      visibility: visible;
+      transform: translate(0,0%);
+  }
+  .item_box{
+      margin-bottom: 5px;
+  }
+  .item,.cancel_action{
+      line-height: 40px;
+      background-color: white;
+  }
+  .item:active,.cancel_action:active{
+      opacity: 0.7;
+  }
+  .item{
+      border-bottom: 1px solid #ddd;
+  }
+  .item:last-child{
+      border: 0px;
+  }
+
+</style>
+
+</head>
+<body >
+
+  <div id="app">
+    <div class="pop_top" :class="isShow_pop?'pop_show':''" >
+      djodd
+    </div>
+    
+    <div class="toast" :class="isShow_toast?'show_toast':''" >
+    <div class="content " :class="isShow_toast?'scale_content':''">
+      <div class="toast_title">提示</div>
+      <div class="toast_info">grege gege</div>
+      <div class="toast_btns">
+           <button class="cancel" @click="hide_toast">取消</button>
+           <button class='sure_btn' @click="sure_toast">确定</button>
+      </div>
+    </div>
+    </div>
+    
+    <div class="actionSheet" :class="isShow_actionSheet?'show_actionSheet':''">
+    <div class="actionSheet_content" :class="isShow_actionSheet?'show_options':''">
+       <div class="item_box">
+          <div class="item">拍照</div>
+          <div class="item">从相册中选择</div>
+       </div>
+       <div class="cancel_action" @click="hide_actionSheet">
+              取消
+       </div>
+    </div>
+    </div>
+    
+    
+    
+    
+    <button @click="show_pop">show_pop</button>
+    
+    
+    <button @click="show_toast">show_toast</button>
+    
+    
+    <button @click="show_actionSheet">show_actionSheet</button>
+  </div>
+
+</body>
+<script src="https://lib.baomitu.com/vue/2.6.10/vue.js"></script>
+<script>
+new Vue({
+  el:"#app",
+  data:{
+      isShow_pop:false,
+      isShow_toast:false,
+      isShow_actionSheet:false
+  },
+  methods:{
+      show_pop:function(){
+          var that = this;
+          that.isShow_pop = true;
+          console.log(that.isShow_pop);
+          setTimeout(function(){
+              that.isShow_pop = false;
+          },1000)
+      },
+      show_toast:function(){
+          var that = this;
+          that.isShow_toast = true;
+      },
+      hide_toast:function(){
+          var that = this;
+          that.isShow_toast = false;
+      },
+      show_actionSheet:function(){
+          var that = this;
+          that.isShow_actionSheet = true;
+      },
+      hide_actionSheet:function(){
+          var that = this;
+          that.isShow_actionSheet = false;
+      }
+  }
+})
+</script>
+

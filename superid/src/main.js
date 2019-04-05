@@ -7,6 +7,8 @@ import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css';
 // import 'amfe-flexible'
 import 'lib-flexible/flexible.js'
+import animate from "animate.css"
+Vue.use(animate)
 import '@/css/common.less'
 import "@/assets/icomoon/style.css"
 // import "@/css/style."

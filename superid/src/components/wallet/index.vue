@@ -28,9 +28,7 @@
             </button>
           </div>
         </div>
-          <div class="grid header-grid list-box box-common">
-              收益
-          </div>
+          
         <!-- <div class="grid header-grid list-box box-common">
           <div>
             <div class="c">
@@ -58,15 +56,24 @@
           </div>
         </div> -->
       </div>
-
-      <div>
+      <div class="grid header-grid  ">
+               <div class="item-b">
+                 <div class="ft-14">静态收益</div>
+                 <div class="ft-20">3131</div>
+               </div>
+               <div class="item-b">
+                 <div class="ft-14">动态收益</div>
+                 <div class="ft-20">1313</div>
+               </div>
+          </div>
+      <div class="assets">
         <div class="item-header">
           <div class="t-1 ft-16">资产</div>
           <div>
             <span class="add">+</span>
           </div>
         </div>
-        <coinItem v-for="(item,index) in dataList" :key="item.id" :title="item" :list="item.child">></coinItem>
+        <coinItem v-for="(item,index) in dataList" :key="item.id" :title="item" :data="item">></coinItem>
       </div>
     </div>
   </div>
@@ -83,26 +90,10 @@ export default {
     return {
       assets: "",
       dataList: [
-        {
-          area: "深圳",
-          num: "10",
-          sum: "30",
-          child: [
-            { area: "罗湖", num: "20", sum: "20" },
-            { area: "福田", num: "20", sum: "20" },
-            { area: "南山", num: "20", sum: "20" }
-          ]
-        },
-        {
-          area: "广州",
-          num: "10",
-          sum: "30",
-          child: [
-            { area: "白云", num: "20", sum: "20" },
-            { area: "福田", num: "20", sum: "20" },
-            { area: "南山", num: "20", sum: "20" }
-          ]
-        }
+         { name: "USDT", id:"AA" },
+          { name: "BTC", id:"SS" }, 
+          { name: "ETH", id:"DD" }
+
       ]
     };
   },
@@ -123,16 +114,17 @@ export default {
   margin-bottom: 0.1rem;
 }
 .box-c {
-  background: #26a2ff;
+  background: #5677FD;
   /* border-radius: 0.1599147121535181rem; */
   color: white;
-  /* width: 85%; */
+   width: 90%; 
   margin: 0 auto;
+  border-radius: 0.3rem;
   padding: 0.3464818763326226rem 0;
   //  padding-bottom: 2rem;
   // margin-bottom: 2rem;
-  height: 5rem;
-  margin-bottom: 2rem;
+  // height: 5rem;
+  // margin-bottom: 2rem;
 }
 .top-box {
   text-align: center;
@@ -190,11 +182,15 @@ export default {
   }
 }
 .header-grid {
-  padding: 0.9rem 0.2rem;
-  border-radius: 0.2rem;
+  padding: 0.9rem 0;
+  // border-radius: 0.2rem;
   color: black;
   position: relative;
   // top: 2rem;
+  width: 100%;
+  margin: 0 auto;
+  background: white;
+ 
 }
 span[class^="icon"] {
   font-size: 0.7rem;
@@ -214,7 +210,27 @@ span[class^="icon"] {
   //  font-size: 0.6rem;
 }
 .add {
-  color: #26a2ff;
+  // color: #26a2ff;
   font-size: 0.7rem;
+}
+.item-b{
+  flex: 1;
+  text-align: center;
+  border-radius: 0.5330490405117271rem;
+  // border: 1px solid red;
+  padding: 0.5rem 0;
+  margin: 0.1rem;
+box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+
+}
+.assets{
+  background: white;
+}
+.content-box1{
+ background: white;
+}
+.mint-header{
+  // background: white;
+  // color: black;
 }
 </style>

@@ -9,7 +9,7 @@
          <div class="r-box">
            <div class="flex-box">
              <div>{{name}}</div>
-             <div>{{limit_money}}</div>
+             <div>$ {{limit_money}}</div>
            </div>
            <div>{{name}}</div>
          </div>
@@ -127,23 +127,23 @@ export default {
   margin: 0.2rem;
  }
  .header-box{
-   padding: 0.2rem;
+  //  padding: 0.2rem;
    background: white;
-   width: 90%;
+  //  width: 90%;
    margin: 0.2rem auto;
-   border-radius: 0.1rem;
+  //  border-radius: 0.1rem;
  }
  .box-2{
    background: white;
-   padding: 0.4rem;
-   width: 86%;
-   margin: 0 auto;
-   border-radius: 0.2rem;
+    padding: 0.4rem 0.2rem;
+    // width: 90%;
+    margin: 0.2rem auto;
+    // border-radius: 0.15rem;
  }
  .input-box{
    background: white;
-   padding: 0.2rem;
-   width: 90%;
+  //  padding: 0.2rem;
+  //  width: 90%;
    margin: 0.2rem auto;
    border-radius: 0.2rem
 

@@ -14,7 +14,7 @@
          <div class="r-box">
            <div class="flex-box">
              <div>{{name}}</div>
-             <div>{{limit_money}}</div>
+             <div>$ {{limit_money}}</div>
            </div>
            <div>{{name}}</div>
          </div>
@@ -35,8 +35,8 @@
        <!-- // -->
          <div class="input-box">
        <h4 class="title-t">投资金额</h4>
-        <mt-field label="$" placeholder="请输入投资金额" v-model="limit_money" ></mt-field>
-         <span>* 该产品最低起投</span>
+        <mt-field label="$" placeholder="请输入投资金额" v-model="buy_money" ></mt-field>
+         <span>* 该产品最低${{limit_money}}起投</span>
          </div>
        <!-- // -->
 
@@ -61,6 +61,7 @@ export default {
       kind:'',
       companys:'',
       limit_money:'',
+      buy_money:'0'
       
 
 
@@ -74,6 +75,7 @@ export default {
      this.getGoodsInfo()
      this.name=this.$route.query.name
      
+     
     //  console.log(this.$route.query)
   },
   methods: {
@@ -86,6 +88,7 @@ export default {
            this.companys=res.data.data[0].companys
            this.id=res.data.data[0].id
            this.orderData=res.data.data[0]
+           this.buy_money=this.limit_money
         })
      },
      tobuy(){
@@ -96,6 +99,7 @@ export default {
             query:{
               "uid":this.$route.query.uid,
               'limit_money':this.limit_money,
+              "buy_money":this.buy_money,
                "goodsId":this.id,
                 "name":this.name,
                 "companys":this.companys,
@@ -129,23 +133,23 @@ export default {
  .header-box{
    padding: 0.2rem;
    background: white;
-   width: 90%;
+  //  width: 90%;
    margin: 0.2rem auto;
-   border-radius: 0.1rem;
+  //  border-radius: 0.1rem;
  }
  .box-2{
    background: white;
    padding: 0.4rem;
-   width: 86%;
+  //  width: 86%;
    margin: 0 auto;
-   border-radius: 0.2rem;
+  //  border-radius: 0.2rem;
  }
  .input-box{
    background: white;
    padding: 0.2rem;
-   width: 90%;
+  //  width: 90%;
    margin: 0.2rem auto;
-   border-radius: 0.2rem
+  //  border-radius: 0.2rem
 
  }
  .mint-cell-wrapper{

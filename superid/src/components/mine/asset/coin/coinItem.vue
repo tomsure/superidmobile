@@ -3,7 +3,7 @@
     <div class="accTitle" @click="toggleList">
        <div>
           <span class="icon-ETH coin-icon"></span>
-      <span class="coin">ETH</span>
+      <span class="coin">{{data1.name}}</span>
        </div>
        <div style="display:flex;just-content:space-between;">
          <div style="text-align:center;padding:0.35rem;">
@@ -15,18 +15,7 @@
        
        
     </div>
-    <ul :class="['accList', { 'maxHeight': isDisplay }]">
-      <li class="accListItem" v-for="item in list">
-         <div>
-            <div class="ft-14">ETH-1213</div>
-            <div class="ft-12">141411</div>
-         </div>
-         <div>
-           <div class="ft-16">3131</div>
-           <div class="ft-12">13221,43</div>
-         </div>
-      </li>
-    </ul>
+   
   </nav>
 </template>
  
@@ -34,20 +23,16 @@
 export default {
   data() {
     return {
-      isDisplay: false
+      isDisplay: false,
+      dat1a:{
+        name:'',
+        id:''
+      }
     };
   },
-  props: {
-    title: {
-      type: Object,
-      default() {
-        return {};
-      }
-    },
-    list: {
-      type: Array,
-      required: true
-    }
+  props: ["data"],
+  created(){
+   this.data1=this.data
   },
   methods: {
     toggleList() {
@@ -62,10 +47,11 @@ export default {
   display: flex;
   flex-direction: column;
   background: white;
-  border-radius: 10px;
+  // border-radius: 10px;
     width: 90%;
     margin: 0.2rem auto;
     padding: 0.2rem;
+    border-bottom: 1px solid #EAEAEA;
     
 }
 .accTitle {

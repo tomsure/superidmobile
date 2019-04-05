@@ -70,7 +70,7 @@ export default {
    background: white;
    width: 90%;
    margin: 0.2rem auto;
-   border-radius: 0.1rem;
+  //  border-radius: 0.1rem;
  }
  .box-2{
    background: white;
@@ -117,10 +117,10 @@ export default {
  }
   .info-box{
     background: white;
-    width: 90%;
+    // width: 90%;
     padding: 0.2rem;
     margin: 0.2rem auto;
-    border-radius: 0.2rem;
+    // border-radius: 0.2rem;
 
 
   }

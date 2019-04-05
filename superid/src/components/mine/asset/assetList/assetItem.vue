@@ -9,7 +9,9 @@
           <div class="rowt" >></div>
      </div>
      <div>
-          <button @click="toTransfer">转账</button><button @click="toReceipt">收款</button>
+          <button @click="toTransfer">转账</button>
+          <button @click="toReceipt">收款</button>
+          <button @click="toReceipt">提现</button>
      </div>
       
   </div>
