@@ -1,10 +1,10 @@
 <template>
   <div>
-    <mt-header title="邀请好友">
-      <router-link to="/" slot="left">
-        <mt-button icon="back"></mt-button>
-      </router-link>
-    </mt-header>
+    
+    <div class="header-box">
+       <mt-button icon="back" @click="back"></mt-button>
+         <div class="header-text">邀请好友</div>
+    </div>
     <div class="box">
       <div class="box-1">
         <div class="box-1-1">blockBank</div>
@@ -106,6 +106,10 @@ export default {
           duration: 2000
         });
     },
+   back(){
+     this.$router.push({path:'/',query:{"selected":'mine'}})
+     
+   } 
   }
 };
 </script>
@@ -185,4 +189,18 @@ export default {
       
     }
  }
+  .header-box{
+    background: #2b81ee;
+    .mint-button--default,.mint-button::after{
+      background: #2b81ee;
+      color: white;
+      -webkit-box-shadow:none;
+    }
+    .header-text{
+      display: inline-block;
+     color: white;       
+     margin-left: 33% ;
+     text-align: center;
+    }
+  }
 </style>

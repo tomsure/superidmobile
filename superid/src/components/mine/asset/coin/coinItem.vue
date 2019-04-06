@@ -10,8 +10,8 @@
        </div>
        <div style="display:flex;just-content:space-between;">
          <div style="text-align:center;padding:0.35rem;">
-            <div class="ft-16" >123,21313</div>
-         <div class="ft-12">2131313</div>
+            <div class="ft-16" >0.00</div>
+         <div class="ft-12">0.00</div>
          </div>
          <span class="icon--2"></span>
        </div>
@@ -28,8 +28,8 @@
        </div>
        <div style="display:flex;just-content:space-between;">
          <div style="text-align:center;padding:0.35rem;">
-            <div class="ft-16" >123,21313</div>
-         <div class="ft-12">2131313</div>
+            <div class="ft-16" >0.00</div>
+         <div class="ft-12">0.00</div>
          </div>
          <span class="icon--2"></span>
        </div>
@@ -46,8 +46,8 @@
        </div>
        <div style="display:flex;just-content:space-between;">
          <div style="text-align:center;padding:0.35rem;">
-            <div class="ft-16" >123,21313</div>
-         <div class="ft-12">2131313</div>
+            <div class="ft-16" >0.00</div>
+         <div class="ft-12">0.00</div>
          </div>
          <span class="icon--2"></span>
        </div>

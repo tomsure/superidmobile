@@ -50,13 +50,23 @@ export default {
   },
   data() { 
     return {
-     selected:'moneyMange'
+      selected:""
+     
     }
   },
+  mounted(){
+   
+  },
   created () {
-    if(this.$route.query.status=='login'){
+    
+     console.log(this.$route.query)
+    if(this.$route.query.status=='login' || this.$route.query.selected=='mine'){
       this.selected='mine'
-    }
+      
+    }else{
+         this.selected='moneyMange'
+        
+       }
     
   }
  }

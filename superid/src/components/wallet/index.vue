@@ -1,11 +1,11 @@
 <template>
   <div class="content-box1">
-    <mt-header title>
-      <router-link to="/" slot="left">
+    <!-- <mt-header title> -->
+      <!-- <router-link to="/" slot="left">
         <span class="icon--11"></span>
-      </router-link>
-      <span class="icon-9" slot="right"></span>
-    </mt-header>
+      </router-link> -->
+      <!-- <span class="icon-9" slot="right"></span> -->
+    <!-- </mt-header> -->
     <div class>
       <div class="box-c">
         <div class="top-box">
@@ -59,11 +59,11 @@
       <div class="grid header-grid  ">
                <div class="item-b">
                  <div class="ft-14">静态收益</div>
-                 <div class="ft-20">3131.00</div>
+                 <div class="ft-20">0.00</div>
                </div>
                <div class="item-b">
                  <div class="ft-14">动态收益</div>
-                 <div class="ft-20">1313.00</div>
+                 <div class="ft-20">0.00</div>
                </div>
           </div>
       <div class="assets">
@@ -99,13 +99,15 @@ export default {
       ]
     };
   },
-  created() {},
+  created() {
+     this.asstes = JSON.parse(localStorage.getItem("user_info")).asstes;
+  },
   methods: {
     toTransfer() {
-      this.$router.push({ path: "/transfer" });
+      // this.$router.push({ path: "/transfer" });
     },
     toReceipt() {
-      this.$router.push({ path: "/receipt" });
+      // this.$router.push({ path: "/receipt" });
     }
   }
 };
@@ -129,12 +131,14 @@ export default {
   // margin-bottom: 2rem;
 }
 .top-box {
-  text-align: center;
+  // text-align: center;
+  margin-left:0.5rem;
+  margin-bottom: 0.5rem;
 }
 .bottom-box {
   display: flex;
   /* justify-content: space-between; */
-  margin: 1rem 0;
+  margin: 1rem 0 0 0;
 }
 .bottom-c {
   flex: 1;
@@ -170,7 +174,7 @@ export default {
   border: 0;
   background: none;
   color: white;
-  border: 1px solid white;
+  // border: 1px solid white;
   padding: 0.2rem 0.2rem;
   width: 2.5rem;
   border-radius: 25px;

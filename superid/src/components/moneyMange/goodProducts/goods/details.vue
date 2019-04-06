@@ -177,12 +177,22 @@ export default {
         pay_no: this.pay_no,
         txid: this.txid
       };
-      requestPost("/api/v1/pay", confirmData).then(res => {
+          let reg=/^[A-Za-z0-9]{50,80}$/;
+         if(this.txid=='' || !reg.test(this.txid)){
+             Toast({
+          message: "请输入正确的交易哈希值",
+          position: "middle",
+          duration: 2000
+        });
+         }else{
+           requestPost("/api/v1/pay", confirmData).then(res => {
         this.$router.push({
           path: "/orderoInfo",
           query: { goodsId: this.$route.query.goodsId, payData: sendData }
         });
       });
+         }
+     
     },
     qrcode(wallet_addr) {
       let qrcode = new QRCode("qrcode", {

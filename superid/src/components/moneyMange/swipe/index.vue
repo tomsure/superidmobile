@@ -42,8 +42,8 @@
     },
     methods: {
       toDownLoad(){
-          // alert(123)
-         this.$router.push({path:'/downLoad'})
+          
+        //  this.$router.push({path:'/downLoad'})
       }
     }
   }
