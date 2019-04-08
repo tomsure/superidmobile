@@ -189,12 +189,12 @@ export default {
     position: relative;
     top: 0.2rem;
     }
-    .icon-btc-01{
-      font-size: 1rem;
+    .icon-btc-01::before,.icon-eth-01::before{
+      font-size: 1.1rem;
+      position: relative;
+      top:0.3rem;
     }
-     .icon-eth-01::before{
-      font-size: 1rem;
-     }
+    
      .coin{
        position: relative;
        top: 0;

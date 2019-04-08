@@ -53,7 +53,7 @@ export default {
 </script>
 <style  scoped>
 [class|="icon"]::before {
-  color: black;
+  color: #8484F5;
   font-size: 0.5rem;
   position: relative;
   top: 0.1rem;

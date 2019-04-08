@@ -5,23 +5,57 @@
     <mt-button icon="back"></mt-button>
   </router-link> 
   </mt-header>
-      <mt-field label="密码" placeholder="6-20位字母、数字或符号组合" type="tel" v-model="password"></mt-field>
-      <mt-button type="primary" size="large" @click="reset">确认</mt-button>
+      <mt-field label="旧密码" placeholder="请输入旧密码" type="password" v-model="old_password"></mt-field>
+      <mt-field label="新密码" placeholder="请输入新密码" type="password" v-model="new_password"></mt-field>
+      
+     <div class="submit-box-common">
+     <mt-button type="primary" size="large" @click="reset">确认</mt-button>
+     </div>
+     
   </div>
 </template>
 
 <script>
+import {requestPut} from '@/api/api.js'
+ import { Toast } from 'mint-ui';
+ 
 export default {
   name: '',
   data() { 
     return {
-     password:''
+     old_password:'',
+     new_password:'',
+     code:''
     }
   },
   methods:{
      reset(){
-         
-           this.$router.push({path:'/login'})
+           let uid=JSON.parse(localStorage.getItem('user_info')).uid
+          
+          requestPut('api/v1/user/'+ uid,{
+              old_password:this.old_password,
+              new_password:this.new_password,
+              code:this.$route.query.code,
+              
+          }).then(res=>{
+            
+            if(res.data.status=="fail"){
+               Toast({
+            message: res.data.msg,
+            position: 'top',
+            duration: 2000
+          });
+            }else  if(res.data.status='success'){
+              Toast({
+            message: '修改成功',
+            position: 'top',
+            duration: 2000
+             });
+               this.$router.push({path:'/setting',})
+            }
+             
+          })
+          
     
      }
     

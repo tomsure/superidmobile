@@ -35,7 +35,7 @@ export default {
   methods:{
       toRegularIntervals(){
     //   alert(123)
-      this.$router.push({path:'/regularIntervals'})
+      // this.$router.push({path:'/regularIntervals'})
   }
   }
  }

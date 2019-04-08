@@ -23,6 +23,17 @@ export default {
   created(){
   requestGet('/api/v1/wallet').then(res=>{
           this.walletList=res.data.data  //暂时隐藏
+           this.walletList.forEach(el => {
+                 if(el.id==7){
+                   el.icon='icon-eth-01'
+                 }else if(el.id==6){
+                   el.icon='icon-btc-01'
+                 }else if(el.id==8){
+                       el.icon='icon-btc-01'
+                 }else if(el.id==9){
+                       el.icon='icon-btc-01'
+                 }
+           });
    })
   },
   methods: {
@@ -36,7 +47,9 @@ export default {
     }
   }
 }
+ 
 
+ 
 </script>
 <style  scoped>
 </style>

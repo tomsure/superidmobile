@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="345px" height="177px" viewBox="0 0 345 177" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval 3@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="-1.11022302e-14%" y1="1.72254642e-14%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#3F82DD" offset="0%"></stop>
+            <stop stop-color="#3A52E2" offset="100%"></stop>
+        </linearGradient>
+        <path d="M7.6916556,-3.10752092e-16 L337.308344,3.10752092e-16 C339.982901,-1.80555915e-16 340.952759,0.278476833 341.930537,0.801398111 C342.908315,1.32431939 343.675681,2.09168511 344.198602,3.06946289 C344.721523,4.04724067 345,5.01709938 345,7.6916556 L345,169.308344 C345,171.982901 344.721523,172.952759 344.198602,173.930537 C343.675681,174.908315 342.908315,175.675681 341.930537,176.198602 C340.952759,176.721523 339.982901,177 337.308344,177 L7.6916556,177 C5.01709938,177 4.04724067,176.721523 3.06946289,176.198602 C2.09168511,175.675681 1.32431939,174.908315 0.801398111,173.930537 C0.278476833,172.952759 1.2037061e-16,171.982901 -2.07168062e-16,169.308344 L2.07168062e-16,7.6916556 C-1.2037061e-16,5.01709938 0.278476833,4.04724067 0.801398111,3.06946289 C1.32431939,2.09168511 2.09168511,1.32431939 3.06946289,0.801398111 C4.04724067,0.278476833 5.01709938,1.80555915e-16 7.6916556,-3.10752092e-16 Z" id="path-2"></path>
+    </defs>
+    <g id="主模块" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="理财" transform="translate(-15.000000, -554.000000)">
+            <rect fill="#F5F5F5" x="0" y="0" width="375" height="1341"></rect>
+            <g id="精选产品" transform="translate(0.000000, 503.000000)">
+                <g id="Oval-3" transform="translate(15.000000, 51.000000)">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="Mask" fill="url(#linearGradient-1)" fill-rule="nonzero" xlink:href="#path-2"></use>
+                    <circle fill="#FAFCFF" fill-rule="nonzero" opacity="0.05" mask="url(#mask-3)" cx="335.5" cy="38.5" r="112.5"></circle>
+                    <circle id="Oval-3-Copy-2" stroke="#FFFFFF" stroke-width="3" opacity="0.1" fill-rule="nonzero" mask="url(#mask-3)" cx="218.5" cy="161.5" r="9"></circle>
+                    <circle id="Oval-3-Copy" fill="#FFFFFF" fill-rule="nonzero" opacity="0.05" mask="url(#mask-3)" cx="41.5" cy="177.5" r="53.5"></circle>
+                    <circle id="Oval-3-Copy" fill="#FFFFFF" fill-rule="nonzero" opacity="0.049999997" mask="url(#mask-3)" cx="41" cy="-9" r="53"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

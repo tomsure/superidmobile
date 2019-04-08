@@ -9,7 +9,7 @@
          <div class="r-box">
            <div class="flex-box">
              <div>{{name}}</div>
-             <div>$ {{limit_money}}</div>
+             <div>最低起投金额：$ {{limit_money}}</div>
            </div>
            <div>{{name}}</div>
          </div>

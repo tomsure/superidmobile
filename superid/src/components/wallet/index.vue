@@ -12,8 +12,9 @@
           <div>
             <div class="top-text">
               <span class="title-text">我的资产($)</span>
+              <div class="bottom-text">{{assets}}</div>
             </div>
-            <div class="bottom-text">{{assets}}</div>
+            
           </div>
         </div>
         <div class="bottom-box">
@@ -59,11 +60,11 @@
       <div class="grid header-grid  ">
                <div class="item-b">
                  <div class="ft-14">静态收益</div>
-                 <div class="ft-20">0.00</div>
+                 <div class="ft-20">{{static_money}}</div>
                </div>
                <div class="item-b">
                  <div class="ft-14">动态收益</div>
-                 <div class="ft-20">0.00</div>
+                 <div class="ft-20">{{dynamic_money}}</div>
                </div>
           </div>
       <div class="assets">
@@ -83,6 +84,7 @@
 
 <script>
 import coinItem from "@/components/mine/asset/coin/coinItem.vue";
+import {requestGet } from '@/api/api.js'
 export default {
   name: "",
   components: {
@@ -91,6 +93,9 @@ export default {
   data() {
     return {
       assets: "",
+      dynamic_money:'',
+      static_money:'',
+
       dataList: [
          { name: "USDT", id:"AA",icon:'icon-usdt coin-icon usdt',count:'' },
           { name: "BTC", id:"SS",icon:'icon-btc-01 coin-icon btc',count:'' }, 
@@ -100,7 +105,7 @@ export default {
     };
   },
   created() {
-     this.asstes = JSON.parse(localStorage.getItem("user_info")).asstes;
+       this.getAssets()
   },
   methods: {
     toTransfer() {
@@ -108,14 +113,27 @@ export default {
     },
     toReceipt() {
       // this.$router.push({ path: "/receipt" });
+    },
+    getAssets() {
+      
+      requestGet("api/v1/asset").then(res => {
+        if ((res.data.status = "success")) {
+          this.assets=res.data.data.total_asset
+          this.static_money=res.data.data.static_money
+          this.dynamic_money=res.data.data.dynamic_money
+          // alert(this.assets)
+        }
+      });
     }
+
   }
 };
 </script>
 
 <style lang="less" scoped>
 .top-text {
-  margin-bottom: 0.1rem;
+  margin-bo5ttom: 0.1rem;
+  width: 50%;
 }
 .box-c {
   background: #5677FD;
@@ -150,6 +168,9 @@ export default {
 
 .bottom-text {
   font-size: 0.3464818763326226rem;
+  text-align: center;
+  padding-right: 1rem;
+  padding-top: 0.2rem;
 }
 .icon-1::before {
   color: white;

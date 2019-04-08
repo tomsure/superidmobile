@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="box-common">
-        <div class="share-title">邀请链接</div>
+        <div class="share-title">邀请链接(仅限电脑端访问)</div>
         <div class="share-t share-num-1 ft-14" id="shareLinkText">{{share_link}}</div>
         <div class="share-t">
           <button

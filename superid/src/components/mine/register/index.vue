@@ -22,10 +22,11 @@
       <mt-button class="register-msg-btn code-btn" v-show="show" v-on:click="getCode">获取</mt-button>
       <mt-button class="register-msg-btn code-btn"  v-show="!show">{{count}} s</mt-button>
     </mt-field>
-    <mt-field label="邀请码" placeholder="请输入邀请码(选填)" v-model="ruleForm.invite_id" class="myinput"></mt-field>
+    <mt-field label="邀请码" placeholder="请输入邀请码(必填)" v-model="ruleForm.invite_id" class="myinput"></mt-field>
     <div class="btn-box">
       <mt-button type="primary" class="submit-btn" @click.native="register">注册</mt-button>
     </div>
+    <!-- <div class="bottom-text" @click="toEmail">邮箱注册</div> -->
   </div>
 </template>
 
@@ -66,7 +67,7 @@ export default {
         mobile_prefix: "86",
         type: "1",
         mobile: this.ruleForm.phone,
-        password: hex_sha1(this.ruleForm.pwd),
+        password:this.ruleForm.pwd,
         invite_id: this.ruleForm.invite_id,
         code: this.ruleForm.codes
       }).then(res => {
@@ -135,6 +136,9 @@ export default {
           });
         }
       });
+    },
+    toEmail(){
+      this.$router.push('/emailRegister')
     }
   }
 };
@@ -155,4 +159,8 @@ export default {
   background: #ff9800;
   color: white;
 }
+ .bottom-text{
+   color: #26A2FF;
+   padding:0.3rem;
+ }
 </style>

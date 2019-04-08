@@ -10,8 +10,10 @@
 
     <accountInfo></accountInfo>
     <div class="info-box">
-      <mt-cell title="付款方式" @click.native="showPayList" is-link>
+      <!-- <mt-cell title="付款方式" @click.native="showPayList" is-link> -->
+        <mt-cell title="付款方式"  is-link>
         <span>{{walletName}}</span>
+         <!-- <span>ETH</span> -->
       </mt-cell>
     </div>
     <div class="agree-box">
@@ -38,6 +40,14 @@
         <div class="qrcode-img">
           <div id="qrcode" class="qrcode-box"></div>
         </div>
+         <div><div class="wallet_addr center-box">{{wallet_addr}}</div>
+         <button class="copy-btn" 
+         @click="copyAddr"
+            v-clipboard:copy="copyText"
+            v-clipboard:success="onCopy"
+            v-clipboard:error="onError"
+         >复制钱包地址</button></div>
+
         <div class="t-center tip-red">可扫描二维码或点击二维码保存在手机上</div>
         <div class="t-area">
           <mt-field placeholder="请输入交易TXID(交易哈希值)" v-model="txid" type="textarea" rows="2"></mt-field>
@@ -57,12 +67,15 @@ import orderHeader from "@/components/common/orderHeader.vue";
 
 import accountInfo from "@/components/common/accountInfo.vue";
 import { Toast } from "mint-ui";
+import { Clipboard } from "clipboard";
 
 import QRCode from "qrcodejs2";
 export default {
   data() {
     return {
       agree: [],
+      msg:'',
+      copyText:'',
       buy_money:'',
       name: "",
       companys: "",
@@ -82,7 +95,8 @@ export default {
       create_at: "",
       money: "",
       pay_currency_num: "",
-      wallet_name: ""
+      wallet_name: "",
+    
     };
   },
 
@@ -118,6 +132,27 @@ export default {
     //
   },
   methods: {
+     copyAddr(){
+      this.copyText=this.wallet_addr
+      this.msg='复制成功！'
+    }, 
+    onCopy(e){
+
+     Toast({
+          message:this.msg,
+          position: "top",
+          duration: 2000
+        });
+    },
+    // 复制失败
+    onError(e){
+      
+      Toast({
+          message: "请重新选择复制",
+          position: "top",
+          duration: 2000
+        });
+    },
     commitOrder() {
       var data = {
         goods: this.goodsId,
@@ -170,7 +205,9 @@ export default {
         create_at: this.create_at,
         money: this.money,
         pay_currency_num: this.pay_currency_num,
-        wallet_name: this.wallet_name
+        wallet_name: this.wallet_name,
+        
+
       };
 
       let confirmData = {
@@ -203,7 +240,8 @@ export default {
     },
     closeModal() {
       this.payModal = "slideOutDown hide";
-    }
+    },
+   
   }
 };
 </script>
@@ -397,4 +435,16 @@ export default {
   margin: 0.2rem 0;
   font-size: 0.3rem;
 }
+ .wallet_addr{
+   word-break: break-all;
+   display: inline-block;
+ }
+ .copy-btn{
+   border:0;
+   background: #2b81ee;
+   color: white;
+   padding: 0.1rem;
+    border-radius: 0.1rem;
+
+ }
 </style>

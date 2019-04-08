@@ -40,4 +40,7 @@ export function requestGet(url){
 export function requestDelete(url,params){
   return request(url,'delete',params)
 }
+export function requestPut(url,params){
+  return request(url,'put',params)
+}
 export default service

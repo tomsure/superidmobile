@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="6px" height="11px" viewBox="0 0 6 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-可点击@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="主模块" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="理财" transform="translate(-339.000000, -585.000000)">
+            <rect fill="#F5F5F5" x="0" y="0" width="375" height="1341"></rect>
+            <g id="精选产品" transform="translate(0.000000, 503.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                <path d="M343.912003,87.5 L339.131996,82.7624906 C338.956001,82.5880603 338.956001,82.305253 339.131996,82.1308227 C339.307991,81.9563924 339.593335,81.9563924 339.76933,82.1308227 L344.868004,87.184166 C345.043999,87.3585963 345.043999,87.6414037 344.868004,87.815834 L339.76933,92.8691773 C339.593335,93.0436076 339.307991,93.0436076 339.131996,92.8691773 C338.956001,92.694747 338.956001,92.4119397 339.131996,92.2375094 L343.912003,87.5 Z" id="icon-可点击"></path>
+            </g>
+        </g>
+    </g>
+</svg>

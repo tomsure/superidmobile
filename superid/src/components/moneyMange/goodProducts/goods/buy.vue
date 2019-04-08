@@ -14,7 +14,7 @@
          <div class="r-box">
            <div class="flex-box">
              <div>{{name}}</div>
-             <div>$ {{limit_money}}</div>
+             <div>最低起投金额：$ {{limit_money}}</div>
            </div>
            <div>{{name}}</div>
          </div>
@@ -31,6 +31,18 @@
              <span>产品分类:</span><span>{{kind}}</span>
           </div>
         </div>
+        <!-- <div class=" flex-box-sp-ard box-2">
+          <div>
+            <span>产品类别:</span><span>{{type}}</span>
+          </div>
+          <div>
+             <span>发行公司:</span><span>{{companys}}</span>
+          </div>
+          <div>
+             <span>产品分类:</span><span>{{kind}}</span>
+          </div>
+        </div> -->
+
       <!-- // -->
        <!-- // -->
          <div class="input-box">

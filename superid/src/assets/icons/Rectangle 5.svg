@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="4px" height="16px" viewBox="0 0 4 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 5@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="-1.11022302e-14%" y1="1.72254642e-14%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#3F82DD" offset="0%"></stop>
+            <stop stop-color="#3A52E2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="主模块" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="钱包" transform="translate(-30.000000, -395.000000)">
+            <rect fill="#F5F5F5" x="0" y="0" width="375" height="788"></rect>
+            <g id="Part-2" transform="translate(15.000000, 372.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+                <rect id="Rectangle-5" x="15" y="23" width="4" height="16" rx="2"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

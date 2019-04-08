@@ -11,11 +11,11 @@
       <div class="swipe-img" @click="toDownLoad" >
            <img src="@/assets/imgs/bg01.png" alt="">
            <div class="text-1">
-             <div class="ft-28">
+             <!-- <div class="ft-28">
              全面上线
-           </div>
+           </div> -->
            <div class="bottom ft-16">
-           BlockBank钱包App推出海量精选量化产品
+          钱包App1.0版本上线，持续优化更新，期待您的加入
            </div>
            </div>
       </div>
@@ -72,15 +72,19 @@
      text-align: center;
      color: white;
      /* background: url('@/assets/imgs/bg01.png') */
+     margin-bottom: 0.5rem;
    }
    .top{
     font-size:''
    }
    .bottom{
-    font-size:''
+    font-size:'';
+    width:80%;
+    margin:  0 auto;
+
    }
    .text-1{
      position: relative;
-     bottom:3rem;
+     bottom:2.5rem;
    }
 </style>

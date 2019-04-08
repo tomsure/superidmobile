@@ -25,7 +25,7 @@
       <mt-cell title="昵称" is-link>
         <span></span>
       </mt-cell>
-      <mt-cell title="安全设置" is-link>
+      <mt-cell title="安全设置" to="/safe" is-link>
         
       </mt-cell>
       <mt-cell title="收款设置" is-link>

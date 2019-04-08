@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="18px" viewBox="0 0 17 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>排行icon@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FC908B" offset="0%"></stop>
+            <stop stop-color="#F85753" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="主模块" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="理财" transform="translate(-17.000000, -767.000000)">
+            <rect fill="#F5F5F5" x="0" y="0" width="375" height="1341"></rect>
+            <g id="收益排行" transform="translate(0.000000, 750.000000)" fill="url(#linearGradient-1)">
+                <g id="排行icon" transform="translate(17.000000, 17.000000)">
+                    <path d="M4,18 L1,18 C0.448,18 0,17.553 0,17 L0,6 C0,5.448 0.448,5 1,5 L4,5 C4.552,5 5,5.448 5,6 L5,17 C5,17.553 4.552,18 4,18" id="Fill-1"></path>
+                    <path d="M10,18 L7,18 C6.448,18 6,17.553 6,17 L6,1 C6,0.448 6.448,0 7,0 L10,0 C10.553,0 11,0.448 11,1 L11,17 C11,17.553 10.553,18 10,18" id="Fill-3"></path>
+                    <path d="M16,18 L13,18 C12.447,18 12,17.553 12,17 L12,9 C12,8.448 12.447,8 13,8 L16,8 C16.553,8 17,8.448 17,9 L17,17 C17,17.553 16.553,18 16,18" id="Fill-5"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

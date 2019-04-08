@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="47px" height="23px" viewBox="0 0 47 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>Group@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="主模块" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="理财" transform="translate(0.000000, -316.000000)">
+            <rect fill="#F5F5F5" x="0" y="0" width="375" height="1341"></rect>
+            <g id="为你推荐" transform="translate(0.000000, 316.000000)" fill="#6EB5FF" fill-rule="nonzero" opacity="0.100000001">
+                <g id="Oval-2">
+                    <g id="Group" transform="translate(-17.000000, -24.000000)">
+                        <circle id="Oval-2" cx="23.5" cy="23.5" r="23.5"></circle>
+                        <circle id="Oval-2" cx="45.5" cy="26.5" r="18.5"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

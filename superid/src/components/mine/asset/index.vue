@@ -16,6 +16,7 @@
         <div>
           <div class="b-text">可用金额</div>
           <div>{{balance}}</div>
+         
         </div>
         <div>
           <div class="b-text">昨日收益</div>

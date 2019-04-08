@@ -11,24 +11,30 @@
       </div>
     </div>
     <div class="middle-box">
-      <!-- <div style="display:flex;"> -->
+     
         <div style="flex:1;">
           
           <div class="assets-text">总资产($)</div>
           <div class="total-data">{{totalAsset}}</div>
         </div>
-        <span
+        <!-- <span
           style="flex:1;text-align:right;"
           class="icon--2"
           @click="toAsset"
-        ></span>
-      <!-- </div> -->
+        ></span> -->
+      
     </div>
 
     <div class="header-bottom" style>
-      <div style="flex:1;text-align:center;">
-        <div class="noPadding assets-text">可用余额($)</div>
+      <div style="flex:1;text-align:center;display:flex;justify-content:center;">
+        <div style="">
+          <div class="noPadding assets-text">可用余额($)</div>
         <div class="noPadding assets-data">{{balance}}</div>
+         
+        </div>
+         <div>
+           <span class="icon--2 text-left" @click="withdraw"></span>
+         </div>
       </div>
       <div style="flex:1;text-align:center;">
         <div class="noPadding assets-text">昨日收益($)</div>
@@ -66,16 +72,19 @@ export default {
   computed: {},
 
   methods: {
+    withdraw(){
+     this.$router.push({path:'/withdraw'})
+    },
     toAsset() {
-      this.$router.push({ name: "Asset" });
+      // this.$router.push({ name: "Asset" });
     },
     getAssets() {
-      // alert(localStorage.getItem('token'))
+      
       requestGet("api/v1/asset").then(res => {
         if ((res.data.status = "success")) {
-          // this.totalAsset=res.data.data.total_asset
-          //  this.balance=res.data.data.balance
-          //  this.yesterdayProfit=res.data.data.yesterday_profit
+          this.totalAsset=res.data.data.total_asset
+           this.balance=res.data.data.balance
+           this.yesterdayProfit=res.data.data.yesterday_profit
         }
       });
     }
@@ -129,8 +138,8 @@ export default {
 .header-bottom div {
   /* padding:0.5rem auto;
         */
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  // padding-top: 0.5rem;
+  // padding-bottom: 0.5rem;
 }
 * {
   background-color: #8484F5;
@@ -176,4 +185,13 @@ export default {
    font-size:0.35rem;
   //  right: 2rem;
  }
+  .text-left{
+    flex:1;
+    text-align:right;
+    
+    
+    line-height: 4;
+    font-size: 0.3rem;
+    margin-left: 0.3rem;
+  }
 </style>

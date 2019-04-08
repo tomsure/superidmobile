@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="15px" viewBox="0 0 8 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-返回@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="钱包功能" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="选择钱包类型" transform="translate(-15.000000, -36.000000)" fill="#FFFFFF">
+            <rect x="0" y="0" width="375" height="667"></rect>
+            <path d="M21.5493367,43.5 L15.175995,37.0397599 C14.941335,36.8019005 14.941335,36.4162541 15.175995,36.1783946 C15.4106549,35.9405351 15.7911139,35.9405351 16.0257739,36.1783946 L22.824005,43.0693173 C23.058665,43.3071768 23.058665,43.6928232 22.824005,43.9306827 L16.0257739,50.8216054 C15.7911139,51.0594649 15.4106549,51.0594649 15.175995,50.8216054 C14.941335,50.5837459 14.941335,50.1980995 15.175995,49.9602401 L21.5493367,43.5 Z" id="icon-返回" fill-rule="nonzero" transform="translate(19.000000, 43.500000) scale(-1, 1) translate(-19.000000, -43.500000) "></path>
+        </g>
+    </g>
+</svg>

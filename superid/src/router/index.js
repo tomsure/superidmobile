@@ -4,10 +4,16 @@ import Home from '@/components/Home'
 import Asset from '@/components/mine/asset/index.vue'
 import Login from '@/components/mine/login/index.vue'
 import register from '@/components/mine/register/index.vue'
+import emailRegister from '@/components/mine/register/emailRegister.vue'
+
+
 import Mine from '@/components/mine/index.vue'
 import forgetPassword from '@/components/mine/setting/forgetPassword.vue'
 import resetPassword from '@/components/mine/setting/resetPassword.vue'
 import verificationCode from '@/components/mine/setting/verificationCode.vue'
+import getCode  from '@/components/mine/setting/getCode.vue'
+
+import safe from '@/components/mine/setting/safe.vue'
 import receipt from '@/components/wallet/receipt/index.vue'
 import selectCoin from '@/components/wallet/transfer/selectCoin/index.vue'
 import transfer from '@/components/wallet/transfer/index.vue'
@@ -23,6 +29,9 @@ import goodsDetails from '@/components/moneyMange/goodProducts/goods/details.vue
 import pay from '@/components/moneyMange/goodProducts/goods/pay.vue'
 import orderoInfo from '@/components/moneyMange/goodProducts/orderInfo.vue'
 import paywayList from '@/components/moneyMange/goodProducts/payway/paywayList.vue'
+import withdraw from '@/components/mine/mineHeader/withdraw.vue'
+
+
 
 
 
@@ -148,7 +157,30 @@ export default new Router({
       path:"/paywayList",
       name:"paywayList",
       component:paywayList
+    },
+    {
+      path:"/emailRegister",
+      name:"emailRegister",
+      component:emailRegister
+
+    },
+    {
+      path:"/safe",
+      name:"safe",
+      component:safe
+
+    },
+    {
+      path:"/withdraw",
+      name:"withdraw",
+      component:withdraw
+
+    },
+    {
+      path:'/getCode',
+      name:'/getCode',
+      component:getCode
     }
-   
+    
   ]
 })

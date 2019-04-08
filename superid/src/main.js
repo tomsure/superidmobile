@@ -12,6 +12,7 @@ Vue.use(animate)
 import '@/css/common.less'
 import "@/assets/icomoon/style.css"
 // import "@/assets/icomoon (1)/style.css"
+// import "@/assets/icomoon (2)/style2.css"
 
 // import "@/css/style."
 

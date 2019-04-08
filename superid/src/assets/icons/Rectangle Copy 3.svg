@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="365px" height="94px" viewBox="0 0 365 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle Copy 3@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="345" height="74" rx="6"></rect>
+        <filter x="-4.3%" y="-20.3%" width="108.7%" height="140.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.866895196   0 0 0 0 0.866895196   0 0 0 0 0.866895196  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="钱包功能" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="选择钱包类型" transform="translate(-5.000000, -341.000000)">
+            <rect fill="#FFFFFF" x="0" y="0" width="375" height="667"></rect>
+            <g id="钱包" transform="translate(15.000000, 84.000000)" fill-rule="nonzero">
+                <g id="4" transform="translate(0.000000, 267.000000)">
+                    <g id="Rectangle-Copy-3">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

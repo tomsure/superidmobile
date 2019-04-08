@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>一键交易@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#94D4FF" offset="0%"></stop>
+            <stop stop-color="#5BA9FF" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-37.5%" y="-37.5%" width="175.0%" height="175.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="5" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="主模块" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="钱包" transform="translate(-28.000000, -267.000000)">
+            <rect fill="#F5F5F5" x="0" y="0" width="375" height="788"></rect>
+            <g id="Part-1">
+                <g id="4Tab" transform="translate(15.000000, 264.000000)">
+                    <g id="一键交易" transform="translate(25.000000, 15.000000)">
+                        <circle id="Oval-2" fill="url(#linearGradient-1)" fill-rule="nonzero" filter="url(#filter-2)" cx="20" cy="20" r="20"></circle>
+                        <circle id="Oval-2" fill="url(#linearGradient-1)" fill-rule="nonzero" cx="20" cy="20" r="20"></circle>
+                        <path d="M24.4905,11.923 C24.6435,12.292 24.6435,12.709 24.4905,13.077 C24.4875,13.085 24.4825,13.091 24.4795,13.098 C24.4065,13.266 24.3045,13.424 24.1675,13.561 L13.5605,24.167 C12.9755,24.753 12.0255,24.753 11.4395,24.167 C10.8535,23.581 10.8535,22.632 11.4395,22.046 L19.4855,14 L17.1065,14 C16.2785,14 15.6065,13.329 15.6065,12.5 C15.6065,11.672 16.2785,11 17.1065,11 L23.1065,11 C23.3035,11 23.5005,11.04 23.6835,11.117 C23.6915,11.12 23.6975,11.125 23.7055,11.128 C23.8725,11.201 24.0305,11.302 24.1675,11.44 C24.3045,11.576 24.4065,11.735 24.4795,11.902 C24.4825,11.909 24.4875,11.916 24.4905,11.923 Z M15.1878,27.7551 C15.0348,27.3861 15.0348,26.9701 15.1878,26.6011 C15.1908,26.5931 15.1958,26.5871 15.1988,26.5791 C15.2718,26.4121 15.3738,26.2541 15.5108,26.1171 L26.1178,15.5101 C26.7038,14.9251 27.6528,14.9251 28.2388,15.5101 C28.8248,16.0961 28.8248,17.0461 28.2388,17.6321 L20.1928,25.6781 L22.5718,25.6781 C23.3998,25.6781 24.0718,26.3501 24.0718,27.1781 C24.0718,28.0061 23.3998,28.6781 22.5718,28.6781 L16.5718,28.6781 C16.3748,28.6781 16.1788,28.6381 15.9938,28.5621 C15.9868,28.5581 15.9808,28.5541 15.9728,28.5501 C15.8058,28.4781 15.6478,28.3751 15.5108,28.2381 C15.3738,28.1021 15.2718,27.9431 15.1988,27.7761 C15.1958,27.7691 15.1908,27.7631 15.1878,27.7551 Z" id="1" fill="#FFFFFF"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

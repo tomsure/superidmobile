@@ -30,10 +30,10 @@ export default {
 
   methods: {
     toTransfer(){
-     this.$router.push({path:'/transfer'})
+    //  this.$router.push({path:'/transfer'})
     }, 
     toReceipt(){
-      this.$router.push({path:'/receipt'})
+      // this.$router.push({path:'/receipt'})
       // alert(123)
     }
   }

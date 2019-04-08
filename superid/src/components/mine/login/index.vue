@@ -4,8 +4,11 @@
     <div class="loginImg">
       <img src="../../../assets/logo.png" alt>
     </div>
-    <mt-field label="账号" placeholder="手机号码/电子邮箱" v-model="username"></mt-field>
-
+   
+      <div>
+         <!-- <mt-picker :slots="slots" @change="onValuesChange"></mt-picker> -->
+      <mt-field label="账号" placeholder="手机号码/电子邮箱"   v-model="username"></mt-field>
+      </div>
     <mt-field label="密码" placeholder="请输入登录密码" type="password" v-model="password"></mt-field>
     <div class="btn-box">
       <mt-button type="primary" class="submit-btn" @click.native="toLogin">立即登录</mt-button>
@@ -19,16 +22,29 @@
 
 <script>
 import { requestPost } from "@/api/api.js";
-import { setToken } from "@/utils/auth.js";
+import { setToken,getToken,removeToken } from "@/utils/auth.js";
 import { Toast } from "mint-ui";
-import { hex_sha1 } from "@/utils/sha1.js";
+// import { hex_sha1 } from "@/utils/sha1.js";
 
 
 export default {
   data() {
     return {
       username: "",
-      password: ""
+      password: "",
+      slots: [
+        {
+          flex: 1,
+          values: ['86', '93', '12', '32', '21', '45'],
+          className: 'slot1',
+          textAlign: 'right'
+        }, {
+          divider: true,
+          content: '',
+          className: 'slot2'
+        }
+      ],
+       paramData:null
     };
   },
 
@@ -37,22 +53,36 @@ export default {
   computed: {},
 
   methods: {
+    onValuesChange(picker, values) {
+      if (values[0] > values[1]) {
+        picker.setSlotValue(1, values[0]);
+      }
+    },
+   
     toLogin() {
-    //   requestPost("/api/v1/goods_list", {}).then(res => {
-    //   //  this.goodsList=res.data
-    //   if (res.status == "success" && res.data != []) {
-    //     res.data.forEach(item => {});
-    //   }
-    //   alert(123)
-    // });
-      requestPost("/api/v1/user/mobile_login", {
-        mobile: this.username,
-        password: hex_sha1(this.password) ,
-        // password: this.password ,
-
-        mobile_prefix: "86"
-      }).then(res => {
+       let url=null
+       let data=null
+         var str = this.username;
+        var reg = RegExp(/@/);
+        if(reg.test(str)){
           
+           url='/api/v1/user/email_login'
+           data={
+              email:this.username,
+              password:this.password
+           }
+        }else{
+             data={
+
+           mobile:this.username,
+           password:this.password,
+          //  mobile_prefix:''
+
+               }
+            url='/api/v1/user/mobile_login'
+        }
+         requestPost( url ,data).then(res => {
+              
         if(res.data.status=="fail") {
           
           Toast({
@@ -68,9 +98,8 @@ export default {
           });
           localStorage.setItem("user_info", JSON.stringify(res.data.data));
 
-          // console.log(typeof JSON.parse(localStorage.getItem("user_info")));
           setToken(res.data.data.token);
-
+           
           this.$router.push({ path: "/", query: { status: "login" } });
         }
       })
@@ -81,7 +110,8 @@ export default {
     },
     toRegister() {
       this.$router.push({ path: "/register" });
-    }
+    },
+
   }
 };
 </script>

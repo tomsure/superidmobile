@@ -5,8 +5,8 @@
           
          <div class="coin-text">
           <div>
-              <span class="usdt-icon"><img src="@/assets/usdt.png" alt=""></span>
-              <!-- <span class="icon-usdt"></span> -->
+              <!-- <span class="usdt-icon"><img src="@/assets/usdt.png" alt=""></span> -->
+               <span :class="icon"></span> <!--勿删 -->
 
           </div>
           <div>
@@ -28,15 +28,16 @@ import {requestGet} from '@/api/api.js'
 export default {
   data () {
     return {
-         coinName:''
+         coinName:'',
+         icon:''
     };
   },
   props:['walletData'],
   components: {},
-
   computed: {},
   created(){
     this.coinName=this.walletData.name
+    this.icon=this.walletData.icon
    
   },
   methods: {
@@ -101,9 +102,7 @@ color: #333333 100%;
 padding: 0.46875rem;
   
    }
-   .icon-ETH::before{
-     font-size:1.5rem;
-   }
+  
  .coin-name{
      display: inline-block;
      /* width: 1.5rem; */
@@ -134,4 +133,10 @@ padding: 0.46875rem;
     position: relative;
     top: 0.2rem;
     }
+     .icon-btc-01:before,.icon-eth-01::before{
+       font-size: 1rem;
+       position: relative;
+       top: 0.2rem;
+       margin-right: 0.1rem;
+     }
 </style>
