@@ -32,9 +32,15 @@ export default {
   methods: {
     
     toInputCode() {
-      requestPost("/api/v1/user/send_code_by_username", {
-         
+      // /api/v1/user/send_code
+      // requestPost("/api/v1/user/send_code_by_username", {
+      requestPost("/api/v1/user/send_code", {
+
+          
+          type:" 1",
+          mobile_prefix:'86',
         value: this.phone
+
         }).then(res => {
         //  console.log(res.data.status)
         if (res.data.status === "fail") {
@@ -43,8 +49,14 @@ export default {
             position: "top",
             duration: 2000
           });
-        }else if(res.data.status === "success"){
-         this.$router.push({path:'/getCode',query:{code:""}})
+        }else if(res.data.data.code === "0"){
+         this.$router.push({path:'/getCode',query:{phone:this.phone}})
+       }else if(res.data.data.code=='108'){
+          Toast({
+            message: '手机格式错误',
+            position: "top",
+            duration: 2000
+          });
        }
       });
 

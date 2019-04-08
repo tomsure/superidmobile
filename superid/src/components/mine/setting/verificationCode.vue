@@ -1,7 +1,7 @@
 <template>
   <div class="">
       <mt-header title="输入验证码">
-  <router-link to="/login" slot="left">
+  <router-link to="/safe" slot="left">
     <mt-button icon="back"></mt-button>
   </router-link> 
   </mt-header>
@@ -29,7 +29,7 @@ export default {
   },
   methods:{
       sendCode(){
-        // /api/v1/user/send_code
+       
         let data={
           value:JSON.parse(localStorage.getItem('user_info')).mobile,
           type:" 1",

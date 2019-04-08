@@ -3,6 +3,12 @@
  -->
 <template>
   <div>
+    <mt-header title="安全设置">
+  <router-link to="/setting" slot="left">
+    <mt-button icon="back"></mt-button>
+  </router-link>
+  
+</mt-header>
     <!-- <mt-cell title="手机号码"  is-link value=""></mt-cell> -->
     <!-- <mt-cell title="电子邮箱"  is-link :value="email"></mt-cell> -->
     <mt-cell title="登录密码"  @click.native="sendCode" is-link :value="status"></mt-cell>

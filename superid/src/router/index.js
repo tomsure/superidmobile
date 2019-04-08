@@ -12,6 +12,7 @@ import forgetPassword from '@/components/mine/setting/forgetPassword.vue'
 import resetPassword from '@/components/mine/setting/resetPassword.vue'
 import verificationCode from '@/components/mine/setting/verificationCode.vue'
 import getCode  from '@/components/mine/setting/getCode.vue'
+import reset  from '@/components/mine/setting/reset.vue'
 
 import safe from '@/components/mine/setting/safe.vue'
 import receipt from '@/components/wallet/receipt/index.vue'
@@ -180,6 +181,11 @@ export default new Router({
       path:'/getCode',
       name:'/getCode',
       component:getCode
+    },
+    {
+      path:'/reset',
+      name:'/reset',
+      component:reset
     }
     
   ]
