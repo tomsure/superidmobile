@@ -16,25 +16,48 @@
     <div class="submit-box-common">
       <mt-button type="primary" size="large" @click="withdraw">提现</mt-button>
     </div>
-    <!-- <div >
-           <mt-cell title="提现金额" value=""></mt-cell>
-            <mt-cell title="提现账户" value=""></mt-cell>
-            <div class="submit-box-common">
-           <mt-button type="primary" size="large" >确认</mt-button>
-    </div>-->
-    <!-- </div> -->
+      <mt-popup
+  v-model="popupVisible"
+  popup-transition="popup-fade">
+     <div class="prop-content">
+        <span>13213</span>
+        <span>1313</span>
+     </div>
+     <div class="prop-content">
+        <span>13213</span>
+        <span>1313</span>
+     </div>
+     <div class="prop-content">
+        <span>13213</span>
+        <span>1313</span>
+     </div>
+</mt-popup>
   </div>
 </template>
 
 <script>
 import { MessageBox } from "mint-ui";
+import {requestPost,requestGet} from '@/api/api.js'
 export default {
   data() {
     return {
-      number: ""
+      popupVisible:'',
+      number: "",
+      withdraw_money:'',
+      code:'',
+      wallets:{
+        name:'',
+        addr:''
+
+      },
+      
+
+
     };
   },
-  created() {},
+  created() {
+    this.getWallet();
+  },
   components: {},
 
   computed: {},
@@ -42,7 +65,29 @@ export default {
   methods: {
     withdraw() {
       let _this = this;
-      this.tips(_this);
+      // this.tips(_this);
+         requestPost(
+          "/api/v1/withdraw",
+          {
+            wallet_name: this.wallets.name,
+            wallet_addr: this.wallets.addr,
+            money: this.withdraw_money,
+            code: this.code
+          },).then(res=>{
+
+         })
+    },
+    getWallet(){
+      requestGet('/api/v1/wallet/get_default_wallet').then(res=>{
+          if (res.data.status == "success") {
+            this.wallets = res.data.data;
+          } else {
+            MessageBox({
+        title: "提示",
+        message: '还没有设置钱包信息！请去设置钱包'
+      })
+          }
+      })
     },
     tips(_this) {
       let msg = `
@@ -87,5 +132,13 @@ export default {
     position: relative;
     bottom: 0.2rem;
     color: red;
+  }
+  .prop-content{
+    width: 100%;
+    display: flex;
+    span{
+      display: inline-block;
+      width: 100%;
+    }
   }
 </style>

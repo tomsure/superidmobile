@@ -13,6 +13,9 @@ import resetPassword from '@/components/mine/setting/resetPassword.vue'
 import verificationCode from '@/components/mine/setting/verificationCode.vue'
 import getCode  from '@/components/mine/setting/getCode.vue'
 import reset  from '@/components/mine/setting/reset.vue'
+import authentication  from '@/components/mine/setting/authentication.vue'
+import authStatus  from '@/components/mine/setting/authStatus.vue'
+
 
 import safe from '@/components/mine/setting/safe.vue'
 import receipt from '@/components/wallet/receipt/index.vue'
@@ -186,7 +189,21 @@ export default new Router({
       path:'/reset',
       name:'/reset',
       component:reset
-    }
+    },
+    {
+      path:'/authentication',
+      
+      name:'authentication',
+      component:authentication
+    },
+    {
+      path:'/authStatus',
+      name:'authStatus',
+      component:authStatus
+    },
+    // {
+
+    // }
     
   ]
 })
