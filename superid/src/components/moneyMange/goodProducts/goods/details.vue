@@ -172,10 +172,10 @@ export default {
             this.order_no = res.data.data.order_no;
             this.pay_at = res.data.data.pay_at;
             this.wallet_addr = res.data.data.wallet_addr;
-            (this.create_at = res.data.data.create_at),
-              (this.money = res.data.data.money),
-              (this.pay_currency_num = res.data.data.pay_currency_num),
-              (this.wallet_name = res.data.data.wallet_name);
+            this.create_at = res.data.data.create_at,
+              this.money = res.data.data.money,
+              this.pay_currency_num = res.data.data.pay_currency_num,
+              this.wallet_name = res.data.data.wallet_name;
             this.showModal(this.wallet_addr);
           }
         });
@@ -187,7 +187,7 @@ export default {
     getWalletData(data) {
       this.walletName = data.walletName;
       this.walletId = data.walletId;
-      //  console.log(this.walletId)
+     
       this.payWayModal = "slideOutDown hide";
     },
     showModal(wallet_addr) {

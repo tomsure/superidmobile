@@ -22,10 +22,13 @@ import receipt from '@/components/wallet/receipt/index.vue'
 import selectCoin from '@/components/wallet/transfer/selectCoin/index.vue'
 import transfer from '@/components/wallet/transfer/index.vue'
 import assetTypeList from '@/components/wallet/receipt/assetTypeList.vue'
+
 import share from '@/components/mine/share.vue'
 import regularIntervals from '@/components/moneyMange/regularIntervals.vue'
 import productDetails from '@/components/moneyMange/productDetails.vue'
 import walletMange from '@/components/wallet/walletMange/index.vue'
+import addWalletAddr from '@/components/wallet/walletMange/addWalletAddr.vue'
+
 import setting from '@/components/mine/setting/setting.vue'
 import downLoad from '@/components/moneyMange/downLoad/index.vue'
 import buy from '@/components/moneyMange/goodProducts/goods/buy.vue'
@@ -201,9 +204,11 @@ export default new Router({
       name:'authStatus',
       component:authStatus
     },
-    // {
-
-    // }
+    {
+   path:'/addWalletAddr',
+   name:'addWalletAddr',
+   component:addWalletAddr
+    }
     
   ]
 })

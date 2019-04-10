@@ -3,9 +3,9 @@
   <div>
     <mineHeader></mineHeader>
     <div>
-      <!-- <mt-cell title="钱包管理" to="/walletMange" :is-link="true">
+      <mt-cell title="钱包管理" to="/walletMange" :is-link="true">
         <span slot="icon" class="icon-5"></span>
-      </mt-cell> -->
+      </mt-cell>
       <!-- <mt-cell title="账单明细" :is-link="true">
         <span slot="icon" class="icon-23"></span>
       </mt-cell> -->

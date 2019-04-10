@@ -155,10 +155,7 @@ export default {
 .icon-16::before {
   color: gray;
 }
-.code-btn {
-  background: #ff9800;
-  color: white;
-}
+
  .bottom-text{
    color: #26A2FF;
    padding:0.3rem;
