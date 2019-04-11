@@ -4,28 +4,31 @@
     
     <div>
        <div class="wallet-box">
-            <mt-cell title="币种:"   :value="wallet.name"></mt-cell> 
-            <mt-cell title="币种:"   :value="wallet.addr"></mt-cell> 
-            <mt-cell title="备注:"   :value="wallet.reamrk"></mt-cell> 
-             
-             
+            <mt-cell title="ETH-wallet"  :is-link='true' value="">
               
-             
-              
-              <div class="flex-box">
-                 <div @click="changeStatus({status:1},this.id)">设为默认</div>
-                 <div>编辑</div>
-                 <div @click="changeStatus()">删除</div>
+                
+               <mt-button  slot="right"></mt-button>
+              </mt-cell> 
+
+              <div class="addr">
+                    addadadwedwdwedewdfwededfewd
+              </div>
+              <div class="list-box-b">  
+               <div class="ft-18">
+                 16648 <span>ETH</span>
                </div>
+               <div>
+                   <span class="icon-ETH"></span>
+               </div>
+              </div>
        </div>
     </div>
   </div>
 </template>
 
 <script>
- import {requestPut} from '@/api/api.js'
+ 
 export default {
-  
   data () {
     return {
       wallet:{
@@ -42,27 +45,10 @@ export default {
   components: {},
  created(){
    this.wallet=this.walletData
-    console.log(this.wallet)
  },
- 
   computed: {},
 
-  methods: {
-    changeStatus(action,data){
-     if(action.status==1){
-       this.updateWallet({default:'1'})
-     }else if(action.status==2){
-       
-     }
-    },
-    updateWallet(updData){
-      requestPut('/api/v1/user_wallet/' + this.id ,updData).then(res=>{
-      if(res.data.code==0){
-         
-      }
-      })
-    }
-  }
+  methods: {}
 }
 
 </script>
@@ -97,11 +83,4 @@ export default {
  .mint-cell{
    border-radius: 6px;
  }
-  .flex-box{
-    display: flex;
-    padding: 0.2rem;
-    font-size: 0.4rem;
-    color: #26a2ff;
-    
-  }
 </style>

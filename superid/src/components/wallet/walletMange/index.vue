@@ -7,12 +7,11 @@
       </router-link>
     </mt-header>
     <div>
-        <div class="add-wallet-box" @click="toAddr">
+       
+      <walletItem v-for="(item,index) in walletList" :key="item.index" :walletData='item' ></walletItem>
+      <div class="add-wallet-box" @click="toAddr">
            <img src="@/assets/add.png" alt="">
         </div>
-      <walletItem></walletItem>
-      <walletItem></walletItem>
-      <walletItem></walletItem>
     </div>
     
   </div>
@@ -24,16 +23,26 @@ import  {requestPost,requestGet} from '@/api/api.js'
 export default {
   data() {
     return {
-    
+     walletList:[]
     };
   },
 
   components: {
     walletItem
   },
-
+  created () {
+    this.getWallet()
+  },
   computed: {},
   methods: {
+     getWallet(){
+      requestGet('/api/v1/user_wallet').then(res=>{
+         if(res.data.code==0){
+              this.walletList=res.data.data
+              console.log(this.walletList)
+         }
+      })
+     },
      toAddr(){
        this.$router.push({path:'/addWalletAddr'})
      }
