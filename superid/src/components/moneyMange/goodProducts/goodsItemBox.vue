@@ -6,9 +6,9 @@
     </div>
      <div class="item-c">
        
-      <div class="t-center cmame">
+      <!-- <div class="t-center cmame">
         发行公司：{{comanys}}
-      </div>
+      </div> -->
     <div class="goods-box">
       <goodsItem class="goods-item" v-for="(item,index) in productList" :goodsData='item' :key="item.index" @click.native="transaction(item)"></goodsItem>
     </div>

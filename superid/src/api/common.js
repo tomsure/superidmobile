@@ -1,3 +1,5 @@
+import {requestGet} from '@/api/api.js'
+import { MessageBox, Toast } from "mint-ui";
 export function getCode() {
   this.show = false;
   const TIME_COUNT = 60;
@@ -16,4 +18,15 @@ export function getCode() {
       }
     }, 1000);
   }
+}
+
+export function tips(msg){
+  Toast({
+    message:msg,
+    position: "top",
+    duration: 2000
+  });
+}
+export function msgs(title,msg){
+    
 }

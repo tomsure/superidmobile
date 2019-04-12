@@ -13,7 +13,7 @@
              
               
               <div class="flex-box">
-                 <div @click="changeStatus({status:1},this.id)">设为默认</div>
+                 <div @click="changeStatus({status:1},wallet.id)">设为默认</div>
                  <div>编辑</div>
                  <div @click="changeStatus()">删除</div>
                </div>
@@ -24,6 +24,7 @@
 
 <script>
  import {requestPut} from '@/api/api.js'
+ import { Toast } from 'mint-ui';
 export default {
   
   data () {
@@ -49,17 +50,29 @@ export default {
 
   methods: {
     changeStatus(action,data){
+       
      if(action.status==1){
        this.updateWallet({default:'1'})
      }else if(action.status==2){
-       
+        
      }
     },
     updateWallet(updData){
-      requestPut('/api/v1/user_wallet/' + this.id ,updData).then(res=>{
+      requestPut('/api/v1/user_wallet/' + this.wallet.id ,updData).then(res=>{
       if(res.data.code==0){
-         
-      }
+              Toast({
+              message: '设置成功',
+              position: 'top',
+              duration: 2000
+            });
+            this.$router.push({path:'/',query:{selected:'mine'}})
+       }else{
+          Toast({
+              message: res.data.msg,
+              position: 'top',
+              duration: 2000
+            });
+       }
       })
     }
   }

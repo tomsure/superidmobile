@@ -26,13 +26,13 @@
     <div class="btn-box">
       <mt-button type="primary" class="submit-btn" @click.native="register">注册</mt-button>
     </div>
-    <!-- <div class="bottom-text" @click="toEmail">邮箱注册</div> -->
+    <div class="bottom-text" @click="toEmail">邮箱注册</div>
   </div>
 </template>
 
 <script>
 import { requestPost } from "@/api/api.js";
-import { hex_sha1 } from "@/utils/sha1.js";
+// import { hex_sha1 } from "@/utils/sha1.js";
 import { Toast } from "mint-ui";
 export default {
   data() {

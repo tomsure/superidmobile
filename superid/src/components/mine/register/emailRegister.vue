@@ -31,7 +31,7 @@
 
 <script>
 import { requestPost } from "@/api/api.js";
-import { hex_sha1 } from "@/utils/sha1.js";
+// import { hex_sha1 } from "@/utils/sha1.js";
 import { Toast } from "mint-ui";
 export default {
   data() {
@@ -63,10 +63,10 @@ export default {
   methods: {
     register() {
       requestPost("/api/v1/user", {
-        // mobile_prefix: "86",
+        mobile_prefix: "86",
         type: "2",
-        mobile: this.ruleForm.emial,
-        password: hex_sha1(this.ruleForm.pwd),
+        email: this.ruleForm.emial,
+        password: this.ruleForm.pwd,
         invite_id: this.ruleForm.invite_id,
         code: this.ruleForm.codes
       }).then(res => {
@@ -115,13 +115,11 @@ export default {
 
     sendCode() {
       requestPost("/api/v1/user/send_code", {
-        value: this.ruleForm.phone,
-        type: "1",
-        mobile_prefix: "86"
+        value: this.ruleForm.email,
+        type: "2",
+        
       }).then(res => {
-        // console.log(res);
-
-        if ((res.data.status == "fail")) {
+          if ((res.data.status == "fail")) {
           Toast({
             message: res.data.msg,
             position: "top",
