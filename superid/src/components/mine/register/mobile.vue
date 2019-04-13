@@ -1,8 +1,8 @@
 <!--  -->
 <template>
   <div>
-    
-    <mt-field label="邮箱" placeholder="请输入邮箱"  v-model="ruleForm.email"></mt-field>
+    <mt-cell title="国际区号" :value='mobilePrefix' @click.native='selectPrefix' is-link></mt-cell>
+    <mt-field label="手机号" placeholder="请输入手机号" type="tel" v-model="ruleForm.phone"></mt-field>
     <mt-field
       label="密码"
       placeholder="请输入密码"
@@ -13,50 +13,96 @@
       <span class="icon-16" @click="show1"></span>
     </mt-field>
     <mt-field label="验证码" placeholder="请输入验证码" type="number" v-model="ruleForm.codes">
-      <!-- <mt-button size="small" class="code-btn" @click="sendCode">获取</mt-button>
-      -->
-      <mt-button class="register-msg-btn code-btn" v-show="show" v-on:click="getCode">获取</mt-button>
-      <mt-button class="register-msg-btn code-btn"  v-show="!show">{{count}} s</mt-button>
+    <mt-button class="register-msg-btn code-btn" v-show="show" v-on:click="getCode">获取</mt-button>
+    <mt-button class="register-msg-btn code-btn"  v-show="!show">{{count}} s</mt-button>
     </mt-field>
     <mt-field label="邀请码" placeholder="请输入邀请码(必填)" v-model="ruleForm.invite_id" class="myinput"></mt-field>
     <div class="btn-box">
-      <mt-button type="primary" class="submit-btn" @click.native="register">注册</mt-button>
+    <mt-button type="primary" class="submit-btn" @click.native="register">注册</mt-button>
     </div>
+    <mt-popup v-model="popupVisible" position="bottom">
+    <mt-picker value-key="cn_name" @change='onDataChange' :slots="slots" ></mt-picker>
+    <div class="submit-box-common">
+    <mt-button type="primary" size="large" @click="close">确定</mt-button>
+      </div>
+    </mt-popup>
   </div>
 </template>
 
 <script>
-import { requestPost } from "@/api/api.js";
+import { requestPost,requestGet } from "@/api/api.js";
 // import { hex_sha1 } from "@/utils/sha1.js";
 import { Toast } from "mint-ui";
 export default {
   data() {
     return {
-      
+      popupVisible:false,
+      mobilePrefix: "86",
       ruleForm: {
-        email: "",
+        phone: "",
         codes: "",
         invite_id: "",
         pwd: "",
         checkpwd: "",
         type: "1"
       },
-      email: "",
+      phone: "",
       username: "",
       password: "",
       number: "",
       pwd: "password",
       show:true,    
       timer:null,
-      count:''
+      count:'',
+      slots: [
+        {
+          flex: 1,
+          values: [],
+          className: "slot1",
+          textAlign: "center",
+          defaultIndex: 1
+        },
+        
+      ]
     };
   },
+
+  components: {},
+
+  computed: {},
+
   methods: {
+  onDataChange(picker, values) {
+      if (values[0]) {
+        this.country = values[0].cn_name;
+        this.mobilePrefix=values[0].mobile_prefix
+        
+      }
+    },
+    selectPrefix(){
+     this.popupVisible=true
+     
+      this.getcountry()
+    },
+    getcountry() {
+      requestGet("/api/v1/mobile_prefix").then(res => {
+        if (res.data.status == "success") {
+          let arr = [];
+        res.data.data.forEach(el => {
+            arr.push({ cn_name: el.cn_name + '('+ el.mobile_prefix +')', id: el.id,mobile_prefix:el.mobile_prefix });
+          });
+          this.slots[0].values = arr;
+          
+
+        }
+      });
+    },
     register() {
       requestPost("/api/v1/user", {
-        type: "2",
-        email: this.ruleForm.email,
-        password: this.ruleForm.pwd,
+        mobile_prefix:this.mobilePrefix,
+        type: "1",
+        mobile: this.ruleForm.phone,
+        password:this.ruleForm.pwd,
         invite_id: this.ruleForm.invite_id,
         code: this.ruleForm.codes
       }).then(res => {
@@ -105,11 +151,13 @@ export default {
 
     sendCode() {
       requestPost("/api/v1/user/send_code", {
-        value: this.ruleForm.email,
-        type: "2",
-        
+        value: this.ruleForm.phone,
+        type: "1",
+        mobile_prefix: "86"
       }).then(res => {
-          if ((res.data.status == "fail")) {
+        // console.log(res);
+
+        if ((res.data.status == "fail")) {
           Toast({
             message: res.data.msg,
             position: "top",
@@ -123,6 +171,12 @@ export default {
           });
         }
       });
+    },
+    toEmail(){
+      this.$router.push('/emailRegister')
+    },
+    close(){
+     this.popupVisible=false
     }
   }
 };
@@ -139,8 +193,9 @@ export default {
 .icon-16::before {
   color: gray;
 }
-.code-btn {
-  background: #ff9800;
-  color: white;
-}
+
+ .bottom-text{
+   color: #26A2FF;
+   padding:0.3rem;
+ }
 </style>

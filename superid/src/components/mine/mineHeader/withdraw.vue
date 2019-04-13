@@ -116,9 +116,8 @@ export default {
             this.qrcode(this.wallets.addr);
                       });
         } else {
-          MessageBox({
-            title: "提示",
-            message: "还没有设置钱包信息！请去设置钱包"
+          MessageBox.alert('还没有设置钱包信息！请去设置钱包').then(res=>{
+             this.$router.push({path:'/walletMange'})
           });
         }
       });
@@ -143,7 +142,7 @@ export default {
     getAvailable() {
       requestGet("/api/v1/asset").then(res => {
         if (res.data.code == 0) {
-          // this.available = res.data.data.available;
+          this.available = res.data.data.available;
         }
       });
     },

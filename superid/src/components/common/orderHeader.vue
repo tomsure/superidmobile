@@ -4,7 +4,7 @@
       
       <div class="flex-box header-box">
          <div class="product-logo">
-           <img src="@/assets/1.png" alt="">
+           <img src="@/assets/logo.png" alt="">
          </div>
          <div class="r-box">
            <div class="flex-box">
@@ -127,7 +127,7 @@ export default {
   margin: 0.2rem;
  }
  .header-box{
-  //  padding: 0.2rem;
+   padding: 0.2rem;
    background: white;
   //  width: 90%;
    margin: 0.2rem auto;

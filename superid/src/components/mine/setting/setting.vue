@@ -9,30 +9,44 @@
       </mt-header>
     </div>
     <div>
-     
-       <mt-cell title="" is-link>
+
+       <!-- <mt-cell title="" is-link> -->
+      
+         
+  
+     <div class='top-box'>
+        <div class="left-box">
+           <div class="img-box"><img slot="icon" src="../../../assets/logo.png"  class="logo" ></div>
          <div class="info-text">
           <div class="ft-18">
             {{username}}
           </div>
           <div class="ft-12">UID:{{uid}}</div>
         </div>
-  <span>修改头像</span>
-  <img slot="icon" src="../../../assets/logo.png" width="24" class="logo" height="24">
-</mt-cell>
+        </div>
+       <div style="margin-right:0.2rem;">
+          <div class="edit-item ft-16"><span>修改头像</span><span class="icon--2"></span></div>
+
+       </div>
+     </div>
+  
+
+<!-- </mt-cell> -->
+
+
     </div>
     <div>
       <mt-cell title="昵称" is-link>
         <span></span>
       </mt-cell>
       <mt-cell title="安全设置" to="/safe" is-link>
-        
+
       </mt-cell>
       <mt-cell title="收款设置" is-link>
-        
+
       </mt-cell>
       <mt-cell title="通用设置" is-link>
-        
+
       </mt-cell>
     </div>
     <div class="btn-box">
@@ -59,7 +73,7 @@ created () {
    if(localStorage.getItem('user_info')){
     this.username=JSON.parse(localStorage.getItem('user_info')).username
     this.uid=JSON.parse(localStorage.getItem('user_info')).uid
-    
+
    }
 },
   methods: {
@@ -87,11 +101,42 @@ created () {
   color: #e51c23;
 }
 .info-text{
-  position: relative;
-  right: 3.3rem;
+  /* position: relative; */
+  right: 1.7rem;
 }
 .logo{
   /* margin-right: 0.5rem; */
   /* margin-left: 0.5rem; */
 }
+.img-box{
+  display:inline-block;
+  width:1rem;
+  height:1rem;
+  margin-right:0.2rem;
+  img{
+    width:100%;
+    height:100%;
+  }
+}
+ .top-box{
+   display:flex;
+   background:white;
+   padding:0.2rem;
+   justify-content:space-between;
+ }
+ .edit-item{
+   float:right;
+   align-item:flex-end;
+   margin-top:0.15rem;
+   /* font-size:' */
+ }
+ .left-box{
+   display:flex;
+ }
+ .icon--2:before{
+   font-size:0.3rem;
+   color:#c8c8cd;
+   font-weight:900;
+   margin-left:0.1rem;
+ }
 </style>
