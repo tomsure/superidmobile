@@ -7,15 +7,20 @@
           <img src="../../../assets/logo.png" alt>
         </div>
         <div style="margin-top:0.2rem;line-height:2;">{{userName}}</div>
-        <span class="level"><img src="@/assets/level.png" alt=""> </span><span class="level-data">{{level}}</span>
+        <!-- <span class="level"><img src="@/assets/level.png" alt=""> </span><span class="level-data">{{level}}</span> -->
       </div>
     </div>
     <div class="middle-box">
      
-        <div style="flex:1;">
+        <div style="flex:1;display:flex;justify-content:center;">
           
-          <div class="assets-text">总资产($)</div>
-          <div class="total-data">{{totalAsset}}</div>
+          <div>
+            <div class="assets-text">产品资产($)</div>
+          <div class="total-data">{{fund_asset}}</div>
+          </div>
+          <div>
+           <span class="icon--2 text-left" @click="withdraw(0,'产品资产提现')"></span>
+         </div>
         </div>
         <!-- <span
           style="flex:1;text-align:right;"
@@ -33,7 +38,7 @@
          
         </div>
          <div>
-           <span class="icon--2 text-left" @click="withdraw"></span>
+           <span class="icon--2 text-left" @click="withdraw(1,'收益提现')"></span>
          </div>
       </div>
       <div style="flex:1;text-align:center;">
@@ -49,10 +54,11 @@ import { requestPost, requestGet } from "@/api/api.js";
 export default {
   data() {
     return {
+      type:'',
       level:'S1',
       logUrl: "", //头像
       userName: "", //用户名
-      totalAsset: "0", //总资产
+      fund_asset: "0", //总资产
       balance: "0", //可用余额
       yesterdayProfit: "0" //昨日收益
     };
@@ -72,8 +78,8 @@ export default {
   computed: {},
 
   methods: {
-    withdraw(){
-     this.$router.push({path:'/withdraw'})
+    withdraw(asset_type,type){
+     this.$router.push({name:'withdraw',params:{asset_type:asset_type,type:type,fund_asset:this.fund_asset}})
     },
     toAsset() {
       // this.$router.push({ name: "Asset" });
@@ -82,7 +88,7 @@ export default {
       
       requestGet("api/v1/asset").then(res => {
         if ((res.data.status = "success")) {
-          this.totalAsset=res.data.data.total_asset
+          this.fund_asset=res.data.data.fund_asset
            this.balance=res.data.data.balance
            this.yesterdayProfit=res.data.data.yesterday_profit
         }

@@ -47,6 +47,50 @@
             请扫描二维码下载
           </div>
       </div>
+      <!-- /api/v1/invite/get_invite_bonus_list -->
+      <div class="box-common">
+      <x-table :cell-bordered="false" :content-bordered="false" style="background-color:#fff;">
+        <thead>
+          <tr style="background-color: #F7F7F7">
+            <th >邀请人数</th>
+            <th >购买产品人数</th>
+           
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+            <td>{{reg_num}}</td>
+            <td>{{buy_num}}</td>
+             
+          </tr>
+            
+        </tbody>
+      </x-table>
+
+         </div>
+       <div class="box-common ">
+           
+  <x-table :cell-bordered="false" :content-bordered="false" style="background-color:#fff;">
+        <thead>
+          <tr style="background-color: #F7F7F7">
+            <th >被邀请人账号</th>
+            <th >预计分红</th>
+            <th >预计分红时间</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for='(item,index) in bonus' :key='item.index'>
+            <td>{{item.username}}</td>
+            <td>{{item.bonus}}</td>
+            <td>{{item.bonus_at}}</td>
+          </tr>
+            
+        </tbody>
+      </x-table>
+
+         </div>
       <div class="box-common">
         <h4>活动规则：</h4>
         <p>1、对于通过推荐链接邀请成功注册的用户，您是他们的一级推荐人；</p>
@@ -64,23 +108,44 @@
 <script>
 import { Toast } from "mint-ui";
 import { Clipboard } from "clipboard";
+import { XTable } from 'vux'
+import {requestPost,requestGet} from '@/api/api.js'
 export default {
   name: "",
+  components:{
+   XTable
+  },
   data() {
     return {
       uid: "",
       share_link: "",
       copyText:'',
-      msg:''
+      msg:'',
+     bonus:[],
+     reg_num:'',
+     buy_num:''
+
+
     };
   },
   created() {
     if (localStorage.getItem("user_info")) {
       this.uid = JSON.parse(localStorage.getItem("user_info")).uid;
       this.share_link = "http://www.superid.in/#/register?id=" + this.uid;
+      this.getProfit()
     }
   },
   methods: {
+    getProfit(){
+      requestGet('/api/v1/invite/get_invite_bonus_list').then(res=>{
+         if(res.data.code==0){
+            this.bonus=res.data.data.bonus
+            this.reg_num=res.data.data.reg_num
+            this.buy_num=res.data.data.buy_num
+            //  console.log(res.data.bonus)
+         }
+      })
+    },
     showShareCode() {
       this.copyText=this.uid
       this.msg="邀请码已复制"
@@ -203,4 +268,5 @@ export default {
      text-align: center;
     }
   }
+   
 </style>

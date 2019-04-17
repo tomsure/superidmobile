@@ -32,6 +32,9 @@ export default {
   components: {},
 
   computed: {},
+  created(){
+   console.log(this.$route.params)
+  },
 
   methods: {
     
@@ -40,7 +43,7 @@ export default {
       //  this.$router.push({path:'/resetPassword',query:{code:this.code}})
 
         requestPost("/api/v1/user/check_code_by_username",{
-         username:this.$route.query.phone,
+         username:this.$route.params.phone,
          code:this.code
         }).then(res=>{
            if(res.data.status=='fail'){
@@ -51,7 +54,7 @@ export default {
              })
            } else if(res.data.status=='success'){
               this.token=res.data.data.token
-               this.$router.push({path:'/reset',query:{code:this.code,token:this.token}})
+               this.$router.push({path:'/reset',query:{code:this.code,token:this.token,from:this.$route.params.from}})
             }
         })
       

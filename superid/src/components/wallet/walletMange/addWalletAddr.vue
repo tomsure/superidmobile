@@ -36,15 +36,15 @@ import { getCode } from '@/api/common.js'
 export default {
     data() {
         return {
-            id: '',
+            id: '9',
             addr: '',
             remark: '',
-            coinType: 'LT',
+            coinType: 'USDT',
             vcode: '',
             default: "0",
             show: true,
             popupVisible: false,
-            coinList: [{ name: '', id: '' }],
+            coinList: [],
             timer: null,
             count: ''
         };
@@ -91,6 +91,7 @@ export default {
             this.popupVisible = true
         },
         selectCoin(coin) {
+             
             this.coinType = coin.name
             this.id = coin.id
             this.popupVisible = false
@@ -99,7 +100,7 @@ export default {
             requestGet('/api/v1/wallet/withdraw_wallet').then(res => {
                 if (res.data.code == 0) {
                     this.coinList = res.data.data
-
+                    
                 }
             })
         },

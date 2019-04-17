@@ -1,8 +1,8 @@
 <!--  -->
 <template>
-  <div>
+  <div class="tab-box-reg">
     <mt-header title="注册">
-      <router-link to="/login" slot="left">
+      <router-link to="/mobileLogin" slot="left">
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>

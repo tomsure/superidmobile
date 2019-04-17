@@ -1,25 +1,31 @@
 <!--  -->
 <template>
-  <div>
+  <div class="login-box" :style="backgroundDiv">
     <div class="loginImg">
-      <img src="../../../assets/logo.png" alt>
+      <img src="../../../assets/logo1.png" alt>
     </div>
-   
-      <div>
-       <mt-cell title="国际区号" :value='mobilePrefix' @click.native='selectPrefix' is-link></mt-cell>
-      <mt-field label="账号" placeholder="手机号码/电子邮箱"   v-model="username"></mt-field>
+      <div class="t-center tc-w header-text">
+         一站式区块链生态平台
+       </div>
+      <div class="login-box-common">
+       <mt-cell title="国际区号" class="radius-top" :value='mobilePrefix' @click.native='selectPrefix' is-link></mt-cell>
+      <mt-field  placeholder="请输入手机号码"   v-model="username"></mt-field>
+      <mt-field  class="radius-bottom" placeholder="请输入登录密码" type="password" v-model="password"></mt-field>
       </div>
-    <mt-field label="密码" placeholder="请输入登录密码" type="password" v-model="password"></mt-field>
+    
     <div class="btn-box">
-      <mt-button type="primary" class="submit-btn" @click.native="toLogin">立即登录</mt-button>
+      <mt-button type="primary" class=" login-btn" @click.native="toLogin">立即登录</mt-button>
     </div>
-    <div class="footer-box">
+    <div class="footer-box login-bottom-text">
       <div @click="forgetPassword">忘记密码？</div>
       <div @click="toRegister">注册</div>
     </div>
+      <div class="t-center bottom-text" >
+          <span  @click="toEmailLogin">邮箱登录</span>
+     </div>
      <mt-popup v-model="popupVisible" position="bottom">
       <mt-picker value-key="cn_name" @change='onDataChange' :slots="slots" ></mt-picker>
-      <div class="submit-box-common">
+      <div class="submit-box-common ">
         <mt-button type="primary" size="large" @click="close">确定</mt-button>
       </div>
     </mt-popup>
@@ -36,6 +42,10 @@ import { Toast } from "mint-ui";
 export default {
   data() {
     return {
+    backgroundDiv: {
+            backgroundImage: 'url(' + require('@/assets/bg.png') + ')'
+             
+                 },
       popupVisible:false,
       country:'',
       mobilePrefix:'86',
@@ -60,6 +70,9 @@ export default {
   computed: {},
 
   methods: {
+      toEmailLogin(){
+     this.$router.push({path:'/EmailLogin'})
+    },
    selectPrefix(){
      this.popupVisible=true
      
@@ -73,9 +86,7 @@ export default {
             arr.push({ cn_name: el.cn_name + '('+ el.mobile_prefix +')', id: el.id,mobile_prefix:el.mobile_prefix });
           });
           this.slots[0].values = arr;
-          
-
-        }
+                  }
       });
     },
     onDataChange(picker, values){
@@ -83,7 +94,7 @@ export default {
         this.country = values[0].cn_name;
         this.mobilePrefix=values[0].mobile_prefix
                     }
-    },
+                                },
     close(){
    this.popupVisible=false
     },
@@ -135,7 +146,7 @@ export default {
     },
     forgetPassword() {
       // alert('change')
-      this.$router.push({ path: "/forgetPassword" });
+      this.$router.push({ name: "forgetPassword",params:{from:'email'} });
     },
     toRegister() {
       this.$router.push({ path: "/register" });
@@ -154,12 +165,13 @@ export default {
   margin-top: 1rem;
 }
 .loginImg {
-  width: 2.665245202558635rem;
-  height: 2.665245202558635rem;
+  width: 1.5rem;
+  height:2.1rem;
   border-radius: 100px;
   // border: 1px solid red;
   overflow: hidden;
-  margin: 1rem auto;
+  margin: 0rem auto;
+  margin-bottom: 0.2rem;
 
   img {
     width: 100%;
@@ -176,6 +188,11 @@ export default {
   justify-content: space-between;
   div {
     flex: 1;
+    color: white;
   }
 }
+ .login-bottom-text{
+     margin-bottom: 1rem;
+   }
+ 
 </style>

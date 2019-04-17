@@ -2,8 +2,8 @@
 <template>
   <div>
     <mt-header title="忘记密码">
-      <router-link to="/login" slot="left">
-        <mt-button icon="back"></mt-button>
+      <router-link :to="backPath" slot="left">
+        <mt-button @click="back" icon="back"></mt-button>
       </router-link>
     </mt-header>
     <mt-field label="手机号" placeholder="请输入手机号" type="tel" v-model="phone"></mt-field>
@@ -15,22 +15,32 @@
 
 <script>
 import { requestPost } from "@/api/api";
+import {back} from '@/api/common.js'
 import { Toast } from "mint-ui";
 
 export default {
   data() {
     return {
 
-      phone: ""
+      phone: "",
+      backPath:''
     };
   },
 
   components: {},
 
   computed: {},
-
+  created(){
+   console.log(this.$route.params)
+  },
   methods: {
-    
+    back(){
+      if(this.$route.params.from=='email'){
+          this.backPath='/EmailLogin'
+      }else if(this.$route.params.from=='mobile'){
+    this.backPath='/mobileLogin'
+      }
+    },
     toInputCode() {
       // /api/v1/user/send_code
       // requestPost("/api/v1/user/send_code_by_username", {
@@ -50,7 +60,7 @@ export default {
             duration: 2000
           });
         }else if(res.data.data.code === "0"){
-         this.$router.push({path:'/getCode',query:{phone:this.phone}})
+         this.$router.push({name:'getCode',params:{phone:this.phone,from:this.$route.params.from}})
        }else if(res.data.data.code=='108'){
           Toast({
             message: '手机格式错误',

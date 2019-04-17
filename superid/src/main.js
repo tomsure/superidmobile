@@ -26,8 +26,8 @@ import VueClipboard from 'vue-clipboard2'
 Vue.use(VueClipboard)
 axios.defaults.withCredentials = false;
 let axiosInstance = axios.create({
-  // baseURL: 'http://119.23.254.95:81',
-  baseURL: 'https://www.superid.in',
+  // baseURL: 'https://192.168.0.7',
+  // baseURL: 'https://www.superid.in',
     transformRequest: function(data) {
       return Qs.stringify(data)
   },

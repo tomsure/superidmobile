@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Asset from '@/components/mine/asset/index.vue'
 import Login from '@/components/mine/login/index.vue'
+import EmailLogin from '@/components/mine/login/EmailLogin.vue'
+import mobileLogin from '@/components/mine/login/mobileLogin.vue'
+
 import register from '@/components/mine/register/index.vue'
 import emailRegister from '@/components/mine/register/emailRegister.vue'
 
@@ -15,6 +18,7 @@ import getCode  from '@/components/mine/setting/getCode.vue'
 import reset  from '@/components/mine/setting/reset.vue'
 import authentication  from '@/components/mine/setting/authentication.vue'
 import authStatus  from '@/components/mine/setting/authStatus.vue'
+import bonus  from '@/components/mine/bonus.vue'
 
 
 import safe from '@/components/mine/setting/safe.vue'
@@ -60,6 +64,16 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/mobileLogin',
+      name: 'mobileLogin',
+      component: mobileLogin
+    },
+    {
+      path: '/EmailLogin',
+      name: 'EmailLogin',
+      component: EmailLogin
     },
     {
       path: '/register',
@@ -185,7 +199,7 @@ export default new Router({
     },
     {
       path:'/getCode',
-      name:'/getCode',
+      name:'getCode',
       component:getCode
     },
     {
@@ -208,7 +222,13 @@ export default new Router({
    path:'/addWalletAddr',
    name:'addWalletAddr',
    component:addWalletAddr
+    },
+    {
+      path:'/bonus',
+      name:'bonus',
+      component:bonus
     }
+    // bonus
     
   ]
 })

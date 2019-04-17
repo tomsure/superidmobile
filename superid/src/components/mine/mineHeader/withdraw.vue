@@ -8,10 +8,13 @@
     </mt-header>
     <div class="info-box">
       <mt-cell title="可提现金额" :value="available"></mt-cell>
-      <mt-field label="提现金额" placeholder="请输入提现金额" type="number" v-model="withdraw_money">
+      <mt-field v-if="$route.params.asset_type==1" label="提现金额" placeholder="请输入提现金额" type="number"  v-model="withdraw_money">
         <mt-button type="primary" size="small" @click="all">全部</mt-button>
       </mt-field>
-      <!-- <div class="tips">提现金额不得低于可用余额</div> -->
+      <mt-field v-if="$route.params.asset_type==0" label="提现金额" placeholder="请输入提现金额" type="number" :disabled='true' v-model="withdraw_money">
+        <!-- <mt-button type="primary" size="small" @click="all">全部</mt-button> -->
+      </mt-field>
+      <div class="tips">提现金额不得低于可用余额(可提现类型:{{type}} )</div>
 
       <!-- <mt-field label="谷歌验证码" placeholder="请输入谷歌验证码" type="number" v-model="code">
         <button>修改</button>
@@ -26,6 +29,7 @@
     <mt-cell title="钱包地址" @click.native="getWalletList" is-link :value="wallets.addr"></mt-cell>
     <div class="submit-box-common">
       <mt-button type="primary" size="large" @click="validateWithDraw">提现</mt-button>
+      <!-- <mt-button type="primary" size="large" @click="withdraw()">提现</mt-button> -->
     </div>
     <mt-popup
       v-model="popupVisible"
@@ -58,7 +62,9 @@ export default {
       number: "",
       available: "",
       withdraw_money: "",
+      // editAbled:false,
       code: "",
+      fund_asset: "",
       wallets: {
         name: "",
         addr: ""
@@ -67,12 +73,26 @@ export default {
     };
   },
   created() {
+    this.type = this.$route.params.type;
+    //  this.fund_asset=this.$route.params.fund_asset
+    this.setEditAbled()
     this.getDefaultWallet();
     this.getAvailable();
+    console.log("data:", this.$route.params);
   },
   components: {},
   computed: {},
   methods: {
+    setEditAbled(){
+    
+      if(this.$route.params.asset_type==0){
+       
+        //  this.editAbled==true
+         
+      }else if(this.$route.params.asset_type==1){
+        // this.editAbled==false
+      }
+    },
     validateWithDraw() {
       if (this.available == 0) {
         tips("提现金额为0，不可提现！");
@@ -80,21 +100,23 @@ export default {
         tips("请输入正确的提现金额！");
       } else if (this.withdraw_money > this.available) {
         tips("提现金额不得大于可提现金额");
-      } else {
+      }else {
         this.withdraw();
       }
     },
     withdraw() {
       let _this = this;
       requestPost("/api/v1/withdraw", {
+        asset_type: this.$route.params.asset_type,
         wallet_name: this.wallets.name,
         wallet_addr: this.wallets.addr,
         money: this.withdraw_money,
         code: this.code
       }).then(res => {
         if (res.data.code == "0") {
-          tips("提现成功");
-          this.$router.push({path:'/',query:{"selected":'mine'}})
+          // tips("提现成功");
+          // this.$router.push({path:'/',query:{"selected":'mine'}})
+          this.tips(_this, res.data.data.money, res.data.data.wallet_addr);
         } else if (res.data.code == "1") {
           tips(res.data.msg);
         }
@@ -114,10 +136,10 @@ export default {
           this.wallets = res.data.data;
           this.$nextTick(function() {
             this.qrcode(this.wallets.addr);
-                      });
+          });
         } else {
-          MessageBox.alert('还没有设置钱包信息！请去设置钱包').then(res=>{
-             this.$router.push({path:'/walletMange'})
+          MessageBox.alert("还没有设置钱包信息！请去设置钱包").then(res => {
+            this.$router.push({ path: "/walletMange" });
           });
         }
       });
@@ -142,17 +164,23 @@ export default {
     getAvailable() {
       requestGet("/api/v1/asset").then(res => {
         if (res.data.code == 0) {
-          this.available = res.data.data.available;
+          // alert(this.$route.params.asset_type)
+          if (this.$route.params.asset_type == 0) {
+            this.available = res.data.data.fund_asset;
+            this.withdraw_money=res.data.data.fund_asset
+          } else if (this.$route.params.asset_type == 1) {
+            this.available = res.data.data.available;
+          }
         }
       });
     },
-    tips(_this) {
+    tips(_this, money, wallet_addr) {
       let msg = `
       <div  class="">
-        <span>提现金额:</span> <span></span>
+        <span>提现金额:</span> <span>${money}</span>
          </div>
          <div>
-           <span>提现账户:</span> <span>4242</span>
+           <span>提现钱包地址:</span> <span>${wallet_addr}</span>
          </div>
          <div>
            <span>提现状态:</span> <span>人工正在审核，请稍后查询</span>
@@ -164,11 +192,12 @@ export default {
         message: msg
       }).then(function() {
         console.log(123);
-        _this.$router.push({ path: "/mine" });
+        // _this.$router.push({ path: "/mine" });
+        _this.$router.push({ path: "/", query: { selected: "mine" } });
       });
     },
     all() {
-      this.withdraw_money=this.available
+      this.withdraw_money = this.available;
     }
   }
 };

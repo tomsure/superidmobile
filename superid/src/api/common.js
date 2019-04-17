@@ -30,3 +30,7 @@ export function tips(msg){
 export function msgs(title,msg){
     
 }
+
+export function back(){
+  this.$router.go(-1)
+ } 

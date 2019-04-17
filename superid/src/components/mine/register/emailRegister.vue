@@ -66,7 +66,7 @@ export default {
             position: "top",
             duration: 2000
           });
-          this.$router.push({ path: "/login" });
+          this.$router.push({ path: "/EmailLogin" });
         } else {
           Toast({
             message: res.data.msg,

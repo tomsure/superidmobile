@@ -55,7 +55,7 @@ export default {
             position: 'top',
             duration: 2000
              });
-               this.$router.push({path:'/setting',})
+               this.$router.push({path:'/mobileLogin',})
             }
              
           })

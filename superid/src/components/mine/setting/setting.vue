@@ -78,7 +78,7 @@ created () {
 },
   methods: {
     logOut() {
-      this.$router.push({ path: "/login" });
+      this.$router.push({ path: "/mobileLogin" });
       localStorage.removeItem("user_info");
       localStorage.removeItem("token");
     }

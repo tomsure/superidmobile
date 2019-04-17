@@ -13,7 +13,7 @@
             <div class="top-text">
               <span class="title-text">我的资产($)</span>
             </div>
-            <div class="bottom-text">{{assets}}</div>
+            <div class="asset-text">{{assets}}</div>
           </div>
         </div>
         <div class="bottom-box">
@@ -83,6 +83,7 @@
 
 <script>
 import coinItem from "@/components/mine/asset/coin/coinItem.vue";
+import{requestGet} from '@/api/api.js'
 export default {
   name: "",
   components: {
@@ -90,7 +91,7 @@ export default {
   },
   data() {
     return {
-      assets: "",
+      assets:"",
       dataList: [
          { name: "USDT", id:"AA",icon:'icon-usdt coin-icon usdt',count:'' },
           { name: "BTC", id:"SS",icon:'icon-btc-01 coin-icon btc',count:'' }, 
@@ -100,9 +101,22 @@ export default {
     };
   },
   created() {
-     this.asstes = JSON.parse(localStorage.getItem("user_info")).asstes;
+    
+     if(localStorage.getItem("user_info")){
+       this.getAssets()
+     }
+      
   },
+  
   methods: {
+     getAssets(){   
+         requestGet('/api/v1/asset').then(res=>{
+              if(res.data.code==0){
+                this.assets=res.data.data.total_asset
+               
+              }
+         })
+     },
     toTransfer() {
       // this.$router.push({ path: "/transfer" });
     },
@@ -151,8 +165,9 @@ export default {
   font-size: 0.5063965884861407rem;
 }
 
-.bottom-text {
+.asset-text {
   font-size: 0.3464818763326226rem;
+  padding-left: 1rem;
 }
 .icon-1::before {
   color: white;

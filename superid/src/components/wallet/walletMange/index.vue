@@ -8,7 +8,7 @@
     </mt-header>
     <div>
        
-      <walletItem v-for="(item,index) in walletList" :key="item.index" :walletData='item' ></walletItem>
+      <walletItem v-for="(item,index) in walletList" :key="item.index" @deleteWallte='deleteData'  :walletData='item' ></walletItem>
       <div class="add-wallet-box" @click="toAddr">
            <img src="@/assets/add.png" alt="">
         </div>
@@ -35,11 +35,16 @@ export default {
   },
   computed: {},
   methods: {
+    deleteData(){
+      // alert('获取')
+      this.getWallet()
+    },
      getWallet(){
       requestGet('/api/v1/user_wallet').then(res=>{
          if(res.data.code==0){
               this.walletList=res.data.data
-              console.log(this.walletList)
+               console.log(this.walletList)
+             
          }
       })
      },
@@ -51,8 +56,8 @@ export default {
 </script>
 <style lang='less' scoped>
  .add-wallet-box{
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   overflow: hidden;
   margin: 1rem auto;
   img{
